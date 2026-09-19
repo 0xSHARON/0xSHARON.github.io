@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHARON BABU // 0xSHARON</title>
+  <meta name="description" content="Sharon Babu — Developer, Music Producer (KAJUKATLI), Gamer. Portfolio showcasing projects, skills, Spotify artist profile, and cybersecurity work.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;0,800;1,700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-card: #0a0a0a;
+      --ink: #e8e4db;
+      --ink-dim: #6b6966;
+      --red: #dc2626;
+      --red-glow: rgba(220,38,38,0.4);
+      --gold: #f59e0b;
+      --gold-glow: rgba(245,158,11,0.3);
+      --border: #1e1e1e;
+      --border-hover: #333;
+      --mono: 'JetBrains Mono', monospace;
+      --display: 'Syne', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--ink);
+      font-family: var(--mono); line-height: 1.5; overflow-x: hidden;
+    }
+    ::selection { background: var(--red); color: #fff; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #1e293b; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+    .scanline {
+      position: fixed; top: 0; left: 0; width: 100%; height: 2px;
+      background: rgba(220,38,38,0.12); box-shadow: 0 0 12px var(--red-glow);
+      z-index: 200; pointer-events: none; animation: scanMove 8s linear infinite;
+    }
+    @keyframes scanMove { 0% { transform: translateY(-100vh); } 100% { transform: translateY(100vh); } }
+    .vignette {
+      position: fixed; inset: 0;
+      background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.55) 150%);
+      pointer-events: none; z-index: 90;
+    }
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: var(--red); z-index: 201; box-shadow: 0 0 8px var(--red-glow);
+      transition: width 0.1s; width: 0%;
+    }
+    .hazard-tape {
+      height: 12px; width: 100%;
+      background: repeating-linear-gradient(-45deg, var(--bg), var(--bg) 10px, var(--red) 10px, var(--red) 20px);
+    }
+    .marquee-bar {
+      background: #0a0a0a; color: var(--ink-dim); padding: 6px 0;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 2px;
+      text-transform: uppercase; overflow: hidden; white-space: nowrap;
+      border-bottom: 1px solid var(--border);
+    }
+    .marquee-inner { display: inline-block; animation: marquee 28s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(5,5,5,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 56px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+    .nav-brand-box {
+      background: var(--red); color: #fff; padding: 3px 8px;
+      font-family: var(--display); font-size: 0.85rem; font-weight: 800;
+    }
+    .nav-brand-text { font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+    .nav-links a, .nav-links button {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 6px 12px; border: 1px solid var(--border);
+      background: transparent; color: var(--ink); text-decoration: none;
+      transition: all 0.15s; cursor: pointer;
+    }
+    .nav-links a:hover, .nav-links button:hover { background: var(--red); color: #fff; border-color: var(--red); }
+    .nav-links .btn-gold:hover { background: var(--gold); border-color: var(--gold); color: #000; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: block !important; }
+    }
+    .nav-mobile-btn {
+      display: none; background: var(--red); color: #fff;
+      border: none; font-family: var(--mono); font-size: 0.8rem;
+      font-weight: 800; padding: 6px 14px; cursor: pointer;
+    }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 150;
+      background: rgba(5,5,5,0.98); flex-direction: column;
+      align-items: center; justify-content: center; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--display); font-size: 1.5rem; font-weight: 800;
+      color: var(--ink); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; transition: color 0.15s;
+    }
+    .mobile-menu a:hover { color: var(--red); }
+    .mobile-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; color: var(--red); font-size: 2rem; cursor: pointer; font-family: var(--mono);
+    }
+
+    .section { max-width: 1320px; margin: 0 auto; padding: 100px 24px; }
+    .section-header { margin-bottom: 48px; }
+    .section-tag {
+      display: inline-block; font-size: 0.65rem; font-weight: 800;
+      color: var(--red); letter-spacing: 3px; text-transform: uppercase;
+      border: 1px solid var(--red); padding: 4px 12px; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--display); font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; text-transform: uppercase; line-height: 1; letter-spacing: -2px;
+    }
+    .section-sub { font-size: 0.78rem; color: var(--ink-dim); margin-top: 8px; }
+
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 100px 24px; position: relative;
+    }
+    .hero-status {
+      display: inline-block; padding: 4px 14px;
+      border: 1px solid rgba(220,38,38,0.3); background: rgba(220,38,38,0.05);
+      font-size: 0.6rem; font-weight: 800; color: var(--red);
+      letter-spacing: 4px; text-transform: uppercase; margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 0.85; text-transform: uppercase; font-style: italic; letter-spacing: -4px;
+    }
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--red), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 15px var(--red-glow));
+    }
+    .hero-tagline { font-size: 1.2rem; color: var(--ink-dim); margin: 32px 0 48px; letter-spacing: 3px; height: 32px; }
+    .hero-tagline .cursor {
+      display: inline-block; width: 2px; height: 22px; background: var(--red);
+      margin-left: 4px; vertical-align: middle; animation: blink 1s infinite;
+    }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+    .btn {
+      font-family: var(--mono); font-size: 0.82rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1px; padding: 14px 28px;
+      border: 2px solid var(--border); background: transparent;
+      color: var(--ink); cursor: pointer; text-decoration: none; transition: all 0.15s; display: inline-block;
+    }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--red); }
+    .btn-red { background: var(--red); color: #fff; border-color: var(--red); }
+    .btn-red:hover { box-shadow: 6px 6px 0 rgba(220,38,38,0.3); }
+    .btn-gold { border-color: var(--gold); color: var(--gold); }
+    .btn-gold:hover { background: var(--gold); color: #000; box-shadow: 4px 4px 0 var(--gold-glow); }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 24px; position: relative; transition: all 0.2s;
+    }
+    .card:hover { border-color: var(--border-hover); transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--red-glow); }
+    .card-num {
+      font-family: var(--display); font-size: 2.5rem; font-weight: 800;
+      color: rgba(255,255,255,0.03); line-height: 1; transition: color 0.3s;
+    }
+    .card:hover .card-num { color: rgba(220,38,38,0.15); }
+    .card-title {
+      font-family: var(--display); font-size: 1.3rem; font-weight: 800;
+      text-transform: uppercase; font-style: italic; letter-spacing: -0.5px; margin: 8px 0;
+    }
+    .card-desc { font-size: 0.78rem; color: var(--ink-dim); line-height: 1.5; margin-bottom: 16px; }
+    .tag {
+      display: inline-block; font-size: 0.6rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 2px 8px; border: 1px solid var(--border); color: var(--ink-dim); margin: 2px;
+    }
+    .tag-red { border-color: rgba(220,38,38,0.3); color: rgba(220,38,38,0.7); background: rgba(220,38,38,0.05); }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03); color: var(--ink);
+      font-size: 0.7rem; text-decoration: none; font-weight: 700; transition: all 0.15s;
+    }
+    .card-link:hover { border-color: var(--red); color: var(--red); }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; }
+    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-bio { padding: 32px; }
+    .about-bio h3 {
+      font-family: var(--display); font-size: 1.6rem; font-weight: 800;
+      color: var(--red); text-transform: uppercase; font-style: italic;
+      margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+    }
+    .about-bio h3::before { content: ''; display: block; width: 32px; height: 2px; background: var(--red); }
+    .about-bio p { font-size: 0.85rem; color: var(--ink-dim); line-height: 1.7; }
+    .progress-bar-container { margin-top: 24px; }
+    .progress-label { font-size: 0.6rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+    .progress-track { width: 100%; height: 4px; background: rgba(255,255,255,0.05); overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--red); width: 0%; transition: width 1.5s ease; }
+
+    .music-box {
+      max-width: 800px; margin: 0 auto; padding: 28px;
+      border: 1px solid var(--border); background: rgba(255,255,255,0.02); position: relative;
+    }
+    .music-box::before {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 32px; height: 32px; border-top: 2px solid rgba(220,38,38,0.3); border-right: 2px solid rgba(220,38,38,0.3);
+    }
+    .music-box::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 32px; height: 32px; border-bottom: 2px solid rgba(220,38,38,0.3); border-left: 2px solid rgba(220,38,38,0.3);
+    }
+    .music-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+    .music-live { display: flex; align-items: center; gap: 8px; font-size: 0.6rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 3px; }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .music-platforms { display: flex; gap: 8px; }
+    .music-platforms a {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+    }
+    .music-platforms a:hover { background: rgba(245,158,11,0.2); border-color: var(--gold); }
+    .music-platforms a img { width: 16px; height: 16px; object-fit: contain; }
+    .spotify-embed { width: 100%; border: none; min-height: 352px; border-radius: 12px; }
+
+    .gaming-grid { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
+    @media (max-width: 900px) { .gaming-grid { grid-template-columns: 1fr; } }
+    .gaming-sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .gamer-ids { padding: 20px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); position: relative; }
+    .gamer-ids::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--red); }
+    .gamer-ids h4 { font-size: 0.6rem; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 16px; }
+    .gamer-id-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem;
+    }
+    .gamer-id-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .gamer-id-platform { display: flex; align-items: center; gap: 6px; color: var(--ink-dim); font-size: 0.6rem; text-transform: uppercase; }
+    .gamer-id-platform img { width: 14px; height: 14px; object-fit: contain; }
+    .gamer-id-value { color: var(--gold); font-weight: 700; }
+    .gamer-id-value a { color: var(--gold); text-decoration: none; }
+    .gamer-id-value a:hover { color: #fff; }
+    .steam-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .steam-stat { text-align: center; padding: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
+    .steam-stat-val { font-size: 1.2rem; font-weight: 800; }
+    .steam-stat-label { font-size: 0.55rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 2px; }
+    .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .game-card { padding: 24px; border: 1px solid var(--border); background: var(--bg-card); position: relative; transition: all 0.2s; }
+    .game-card:hover { border-color: var(--gold); }
+    .game-card-num {
+      position: absolute; top: 0; right: 0; padding: 8px 12px;
+      border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); color: rgba(245,158,11,0.3); font-size: 0.7rem;
+    }
+    .game-card-icon { font-size: 1.5rem; margin-bottom: 16px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); background: rgba(255,255,255,0.03); }
+    .game-card h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 800; text-transform: uppercase; font-style: italic; margin-bottom: 8px; transition: color 0.2s; }
+    .game-card:hover h3 { color: var(--gold); }
+    .game-card-meta { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+    .game-card-meta.rank { color: var(--red); }
+    .game-card-meta.intel { color: var(--ink-dim); }
+    .game-progress { margin-top: 16px; }
+    .game-progress-track { height: 3px; background: rgba(255,255,255,0.05); overflow: hidden; }
+    .game-progress-fill { height: 100%; background: rgba(245,158,11,0.3); transition: width 1.5s ease; }
+    .game-progress-val { font-size: 0.55rem; color: var(--ink-dim); text-align: right; margin-top: 4px; }
+
+    .terminal-wrap {
+      max-width: 900px; margin: 0 auto; background: rgba(0,0,0,0.8);
+      border: 1px solid rgba(220,38,38,0.3); overflow: hidden; position: relative;
+    }
+    .terminal-head {
+      background: rgba(220,38,38,0.08); border-bottom: 1px solid rgba(220,38,38,0.2);
+      padding: 8px 16px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .terminal-dots { display: flex; gap: 6px; }
+    .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .terminal-dot.r { background: rgba(220,38,38,0.5); }
+    .terminal-dot.y { background: rgba(245,158,11,0.5); }
+    .terminal-dot.g { background: rgba(34,197,94,0.5); }
+    .terminal-label { font-size: 0.6rem; color: rgba(220,38,38,0.6); text-transform: uppercase; letter-spacing: 2px; }
+    .terminal-body { padding: 24px; height: 380px; overflow-y: auto; font-size: 0.82rem; }
+    .terminal-body::-webkit-scrollbar { width: 4px; }
+    .terminal-body::-webkit-scrollbar-thumb { background: #333; }
+    .terminal-line { margin-bottom: 4px; }
+    .terminal-line.system { color: #94a3b8; }
+    .terminal-line.user { color: var(--gold); }
+    .terminal-input-row { display: flex; align-items: center; gap: 8px; color: var(--red); margin-top: 8px; }
+    .terminal-input-row span { white-space: nowrap; }
+    .terminal-input {
+      flex: 1; background: transparent; border: none; outline: none;
+      color: var(--ink); font-family: var(--mono); font-size: 0.82rem; caret-color: var(--red);
+    }
+    .terminal-scanlines {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+      background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.1) 50%),
+        linear-gradient(90deg, rgba(255,0,0,0.02), rgba(0,255,0,0.01), rgba(0,0,255,0.02));
+      background-size: 100% 4px, 3px 100%;
+    }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-left h3 {
+      font-family: var(--display); font-size: 2rem; font-weight: 800;
+      text-transform: uppercase; font-style: italic; margin-bottom: 16px;
+    }
+    .contact-left p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.7; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-link {
+      width: 44px; height: 44px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03); display: flex;
+      align-items: center; justify-content: center;
+      color: var(--ink); text-decoration: none; font-size: 1.2rem; transition: all 0.15s;
+    }
+    .social-link:hover { border-color: var(--red); color: var(--red); }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-label { font-size: 0.6rem; color: var(--red); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+    .form-input, .form-textarea {
+      width: 100%; background: var(--bg-card); border: 1px solid var(--border);
+      padding: 12px 16px; color: var(--ink); font-family: var(--mono); font-size: 0.82rem; outline: none; transition: border-color 0.15s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--red); }
+    .form-input::placeholder, .form-textarea::placeholder { color: #333; }
+    .form-textarea { resize: none; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+    .cyber-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 28px; margin-top: 48px; max-width: 800px; margin-left: auto; margin-right: auto;
+      position: relative; transition: all 0.2s;
+    }
+    .cyber-card:hover { border-color: var(--red); transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--red-glow); }
+    .cyber-card-badge {
+      display: inline-block; background: var(--red); color: #fff;
+      font-size: 0.6rem; font-weight: 800; padding: 3px 10px;
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .cyber-card h3 { font-family: var(--display); font-size: 1.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; }
+    .cyber-card p { color: var(--ink-dim); font-size: 0.8rem; margin-bottom: 16px; }
+    .cyber-stats { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+    .cyber-stat { text-align: center; }
+    .cyber-stat-val { font-family: var(--display); font-size: 1.5rem; font-weight: 800; color: var(--red); }
+    .cyber-stat-label { font-size: 0.55rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 1.5px; }
+
+    footer {
+      background: #030303; border-top: 1px solid var(--border);
+      padding: 48px 24px 20px; margin-top: 100px;
+    }
+    .footer-inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px;
+      padding-bottom: 32px; border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; } }
+    .footer-brand { font-family: var(--display); font-size: 1.6rem; font-weight: 800; color: var(--red); margin-bottom: 10px; }
+    .footer-desc { font-size: 0.78rem; color: var(--ink-dim); max-width: 400px; }
+    .footer-col h4 { font-size: 0.72rem; color: var(--red); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 6px; }
+    .footer-col ul li a { color: var(--ink-dim); text-decoration: none; font-size: 0.78rem; transition: color 0.1s; }
+    .footer-col ul li a:hover { color: var(--red); }
+    .footer-bottom {
+      max-width: 1320px; margin: 16px auto 0;
+      display: flex; justify-content: space-between; flex-wrap: wrap;
+      font-size: 0.68rem; color: #333; gap: 8px;
+    }
+    .reveal-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+  <div class="vignette"></div>
+  <div id="progress-bar"></div>
+  <div class="hazard-tape"></div>
+  <div class="marquee-bar"><div class="marquee-inner">
+    // 0xSHARON SYSTEM DIRECTORY // DEVELOPER • GAMER • MUSIC PRODUCER // KAJUKATLI ON SPOTIFY // 3,513 PAGE CYBERSECURITY STUDY BOOK // SHARZO • NEXUSATTEND • BILLCRAFT // STATUS: ONLINE // 0xSHARON SYSTEM DIRECTORY // DEVELOPER • GAMER • MUSIC PRODUCER // KAJUKATLI ON SPOTIFY // 3,513 PAGE CYBERSECURITY STUDY BOOK // SHARZO • NEXUSATTEND • BILLCRAFT // STATUS: ONLINE //
+  </div></div>
+
+  <nav class="nav"><div class="nav-inner">
+    <a href="#" class="nav-brand"><span class="nav-brand-box">0xS</span><span class="nav-brand-text">SHARON BABU</span></a>
+    <div class="nav-links">
+      <a href="#about">[ABOUT]</a><a href="#projects">[PROJECTS]</a><a href="#music" class="btn-gold">[MUSIC]</a><a href="#gaming">[GAMING]</a><a href="#terminal">[TERMINAL]</a><a href="#contact">[CONTACT]</a>
+    </div>
+    <button class="nav-mobile-btn" onclick="document.getElementById('mobile-menu').classList.add('open')">[≡]</button>
+  </div></nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-close" onclick="this.parentElement.classList.remove('open')">[×]</button>
+    <a href="#about" onclick="this.parentElement.classList.remove('open')">About</a>
+    <a href="#projects" onclick="this.parentElement.classList.remove('open')">Projects</a>
+    <a href="#music" onclick="this.parentElement.classList.remove('open')">Music</a>
+    <a href="#gaming" onclick="this.parentElement.classList.remove('open')">Gaming</a>
+    <a href="#terminal" onclick="this.parentElement.classList.remove('open')">Terminal</a>
+    <a href="#contact" onclick="this.parentElement.classList.remove('open')">Contact</a>
+    <a href="https://0xsharon.github.io/cybermanagement" target="_blank">CyberMGMT</a>
+  </div>
+
+  <section class="hero" id="hero">
+    <div class="hero-status">System.Initialize(Status: Online)</div>
+    <h1><span>Sharon</span><br><span class="accent">BABU</span></h1>
+    <div class="hero-tagline"><span id="typewriter-text"></span><span class="cursor"></span></div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-red">View Projects</a>
+      <a href="#music" class="btn btn-gold">Listen to Music</a>
+      <a href="https://github.com/KAJUKATLIii" target="_blank" class="btn">GitHub ↗</a>
+    </div>
+  </section>
+
+  <section class="section reveal-up" id="about">
+    <div class="section-header"><div class="section-tag">INTEL DOSSIER</div><h2 class="section-title">About Me</h2><p class="section-sub">Sharon — Developer, Gamer &amp; Musician</p></div>
+    <div class="about-grid">
+      <div class="card about-bio">
+        <h3>Sharon</h3>
+        <p>Hi, I'm Sharon — a developer, gamer, and music producer. I build things for the web, make beats as <span style="color:var(--gold)">KAJUKATLI</span>, and spend some time gaming. I love combining creativity with code to make stuff that actually matters.</p>
+        <div class="progress-bar-container"><div class="progress-label">Memory.Usage</div><div class="progress-track"><div class="progress-fill" data-width="85"></div></div></div>
+      </div>
+      <div class="skills-grid" id="skills-grid"></div>
+    </div>
+  </section>
+
+  <section class="section reveal-up" id="projects">
+    <div class="section-header"><div class="section-tag">OPERATION HISTORY</div><h2 class="section-title">Deployed Projects</h2><p class="section-sub">Codebases &amp; Production Systems</p></div>
+    <div class="projects-grid" id="projects-grid"></div>
+    <div class="cyber-card reveal-up">
+      <div class="cyber-card-badge">FEATURED // CYBERSECURITY</div>
+      <h3>Cybersecurity Management Study Book</h3>
+      <p>A complete, uncompromised 32-week self-study companion for technical leaders, architects, and CISOs. 100% free and open resources.</p>
+      <div class="cyber-stats">
+        <div class="cyber-stat"><div class="cyber-stat-val">3,513</div><div class="cyber-stat-label">Pages</div></div>
+        <div class="cyber-stat"><div class="cyber-stat-val">10</div><div class="cyber-stat-label">Domains</div></div>
+        <div class="cyber-stat"><div class="cyber-stat-val">157+</div><div class="cyber-stat-label">Free Resources</div></div>
+        <div class="cyber-stat"><div class="cyber-stat-val">32</div><div class="cyber-stat-label">Weeks</div></div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="https://0xsharon.github.io/cybermanagement" target="_blank" class="btn btn-red">View Book Site ↗</a>
+        <a href="https://github.com/0xSHARON/cybermanagement" target="_blank" class="btn">GitHub Repo ↗</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;"><a href="https://github.com/KAJUKATLIii" target="_blank" class="btn">Explore Full Archive ↗</a></div>
+  </section>
+
+  <section class="section reveal-up" id="music">
+    <div class="section-header"><div class="section-tag">AUDIO LIBRARY</div><h2 class="section-title">Stream My Tracks</h2><p class="section-sub">KAJUKATLI — Soul R&amp;B, Slow &amp; Reverb, Indie Pop</p></div>
+    <div class="music-box">
+      <div class="music-header">
+        <div class="music-live"><div class="live-dot"></div><span>Live Feed / Spotify</span></div>
+        <div class="music-platforms">
+          <a href="https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7" target="_blank" title="Spotify"><img src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify"></a>
+          <a href="https://www.jiosaavn.com/artist/kajukatli-songs/v,eC5YfYJJM_" target="_blank" title="JioSaavn"><img src="https://cdn.simpleicons.org/jio/2BC5B4" alt="JioSaavn"></a>
+          <a href="https://music.amazon.in/artists/B0GH2B778C/kajukatli" target="_blank" title="Amazon Music"><img src="https://img.icons8.com/?size=100&id=3TE5FcLikFfj&format=png&color=000000" alt="Amazon"></a>
+          <a href="https://music.apple.com/us/artist/kajukatli/1869692508" target="_blank" title="Apple Music"><img src="https://cdn.simpleicons.org/applemusic/FA57C1" alt="Apple Music"></a>
+        </div>
+      </div>
+      <iframe class="spotify-embed" src="https://open.spotify.com/embed/artist/05WbUMWFoKEvMsNe9mNxN7?utm_source=generator&theme=0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section class="section reveal-up" id="gaming">
+    <div class="section-header"><div class="section-tag">COMBAT LOG</div><h2 class="section-title">Gaming Stats</h2><p class="section-sub">Achievements &amp; Platform IDs</p></div>
+    <div class="gaming-grid">
+      <div class="gaming-sidebar">
+        <div class="gamer-ids">
+          <h4>Identification.Vitals</h4>
+          <div class="gamer-id-row"><div class="gamer-id-platform"><img src="https://cdn.simpleicons.org/discord/5865F2" alt="">Discord</div><span class="gamer-id-value">kajukatli.</span></div>
+          <div class="gamer-id-row"><div class="gamer-id-platform"><img src="https://cdn.simpleicons.org/steam/ffffff" alt="">Steam</div><span class="gamer-id-value"><a href="https://steamcommunity.com/profiles/76561199416920676/" target="_blank">kajukatli</a></span></div>
+          <div class="gamer-id-row"><div class="gamer-id-platform"><img src="https://cdn.simpleicons.org/epicgames/ffffff" alt="">Epic</div><span class="gamer-id-value"><a href="https://store.epicgames.com/en-US/u/08ff2902b4584eb3aefc35de9ac52637" target="_blank">KAJUKATLiii</a></span></div>
+          <div class="gamer-id-row"><div class="gamer-id-platform"><img src="https://cdn.simpleicons.org/riotgames/D32936" alt="">Riot</div><span class="gamer-id-value">KAJUKATLI#00000</span></div>
+          <div class="gamer-id-row"><div class="gamer-id-platform">🎮 Xbox</div><span class="gamer-id-value">KAJUKATLIIII</span></div>
+        </div>
+        <div class="gamer-ids"><div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#1b2838;"></div>
+          <h4 style="color:#66c0f4;">Steam.Stats</h4>
+          <div class="steam-stats-grid">
+            <div class="steam-stat"><div class="steam-stat-val">11</div><div class="steam-stat-label">Level</div></div>
+            <div class="steam-stat"><div class="steam-stat-val">6</div><div class="steam-stat-label">Games</div></div>
+            <div class="steam-stat"><div class="steam-stat-val">4</div><div class="steam-stat-label">Badges</div></div>
+            <div class="steam-stat"><div class="steam-stat-val">42</div><div class="steam-stat-label">Friends</div></div>
+          </div>
+        </div>
+        <div class="gamer-ids" style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px;">
+          <span style="font-size:0.6rem;color:var(--red);text-transform:uppercase;letter-spacing:2px;">System.Status:</span>
+          <span style="font-size:0.6rem;color:#22c55e;text-transform:uppercase;display:flex;align-items:center;gap:4px;"><span class="live-dot"></span>Ready_To_Play</span>
+        </div>
+      </div>
+      <div class="games-grid" id="games-grid"></div>
+    </div>
+  </section>
+
+  <section class="section reveal-up" id="terminal">
+    <div class="section-header"><div class="section-tag">SYSTEM ACCESS</div><h2 class="section-title">Terminal</h2><p class="section-sub">Direct Command Interface</p></div>
+    <div class="terminal-wrap">
+      <div class="terminal-head"><div class="terminal-dots"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div></div><div class="terminal-label">bash — 80×24</div></div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-line system">KAJU OS [Version 1.0.42]</div>
+        <div class="terminal-line system">(c) 2026 Sharon Babu. All rights reserved.</div>
+        <div class="terminal-line system">&nbsp;</div>
+        <div class="terminal-line system">Type "help" to see available commands.</div>
+        <div class="terminal-line system">&nbsp;</div>
+      </div>
+      <div style="padding:0 24px 16px;"><div class="terminal-input-row"><span>sharon@portfolio:~$</span><input type="text" class="terminal-input" id="terminal-input" autocomplete="off"></div></div>
+      <div class="terminal-scanlines"></div>
+    </div>
+  </section>
+
+  <section class="section reveal-up" id="contact">
+    <div class="section-header"><div class="section-tag">DIRECT UPLINK</div><h2 class="section-title">Contact</h2><p class="section-sub">Communication Channel .01</p></div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h3>Transmission.Ready</h3>
+        <p>Initiate a high-priority communication. Whether it's for a collaboration, recruitment, or a technical inquiry, my channels are open.</p>
+        <div class="social-links">
+          <a href="https://github.com/KAJUKATLIii" target="_blank" class="social-link" title="GitHub">⌘</a>
+          <a href="https://www.instagram.com/sharon_339955" target="_blank" class="social-link" title="Instagram">◎</a>
+          <a href="https://www.youtube.com/@kajukatliiii" target="_blank" class="social-link" title="YouTube">▶</a>
+          <a href="https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7" target="_blank" class="social-link" title="Spotify" style="color:#1DB954;">♫</a>
+        </div>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);opacity:0.4;">
+          <div style="font-size:0.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:4px;">System_Encryption_Level: Omega</div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleContactSubmit(event)">
+        <div class="form-row">
+          <div><div class="form-label">Identity.Name</div><input type="text" class="form-input" placeholder="INPUT_TEXT_HERE..." required id="c-name"></div>
+          <div><div class="form-label">Electronic.Mail</div><input type="email" class="form-input" placeholder="ID@DOMAIN.EXE" id="c-email"></div>
+        </div>
+        <div><div class="form-label">Packet.Message</div><textarea class="form-textarea" placeholder="COREDATA_ENTRY..." required id="c-message"></textarea></div>
+        <button type="submit" class="btn btn-red" style="width:100%;text-align:center;" id="c-submit">Initiate Transmission</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="hazard-tape"></div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-brand">0xSHARON</div><p class="footer-desc">Developer, Music Producer, Gamer. Building immersive digital experiences with a HUD-first philosophy.</p></div>
+      <div class="footer-col"><h4>Navigation</h4><ul>
+        <li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li>
+        <li><a href="#music">Music / KAJUKATLI</a></li><li><a href="#gaming">Gaming</a></li>
+        <li><a href="#terminal">Terminal</a></li><li><a href="#contact">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Links</h4><ul>
+        <li><a href="https://github.com/KAJUKATLIii" target="_blank">GitHub</a></li>
+        <li><a href="https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7" target="_blank">Spotify (KAJUKATLI)</a></li>
+        <li><a href="https://0xsharon.github.io/cybermanagement" target="_blank">CyberManagement Book</a></li>
+        <li><a href="https://www.instagram.com/sharon_339955" target="_blank">Instagram</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><div>&copy; 2026 Sharon Babu // 0xSHARON. ALL SYSTEMS OPERATIONAL.</div><div>BUILT WITH BRUTALIST SPEC // ZERO FRAMEWORKS</div></div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('progress-bar').style.width=(window.scrollY/h*100)+'%';});
+    const tagline="Developer \u2022 Gamer \u2022 Musician";let tw_i=0;const tw_el=document.getElementById('typewriter-text');
+    function typeChar(){if(tw_i<tagline.length){tw_el.textContent+=tagline[tw_i++];setTimeout(typeChar,90);}}typeChar();
+    const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+    document.querySelectorAll('.reveal-up').forEach(el=>observer.observe(el));
+    const pObserver=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.style.width=e.target.dataset.width+'%';});},{threshold:0.5});
+    document.querySelectorAll('.progress-fill,.game-progress-fill').forEach(el=>pObserver.observe(el));
+
+    const skills=[
+      {name:'Web Dev',icon:'\u2328',desc:'Clean, fast websites and web apps with modern tech.',tags:['React','Node.js','Vite','HTML/CSS','JavaScript','REST APIs']},
+      {name:'Gaming',icon:'\uD83C\uDFAE',desc:'Competitive gamer who lives for the thrill.',tags:['PC','FPS','Open World','RPG','Valorant','GTA V']},
+      {name:'Music',icon:'\u266B',desc:'Producer releasing tracks under KAJUKATLI.',tags:['Soul R&B','Slow & Reverb','Indie Pop']},
+      {name:'Systems',icon:'\u2699',desc:'Building tools and automations that just work.',tags:['Bots','Scripts','APIs','Discord.js','Python','Shell']},
+      {name:'Deploy',icon:'\uD83D\uDE80',desc:'Ship projects on cloud servers and beyond.',tags:['Vercel','GitHub','CI/CD','Netlify','Railway','Docker']},
+      {name:'Global',icon:'\uD83C\uDF10',desc:'Responsive, accessible, worldwide design.',tags:['Mobile','CSS','UX','Responsive','Dark Mode','Animations']},
+    ];
+    document.getElementById('skills-grid').innerHTML=skills.map(s=>`<div class="card" style="padding:20px;"><div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"><div style="font-size:1.3rem;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);background:rgba(255,255,255,0.03);">${s.icon}</div><h3 style="font-family:var(--display);font-size:1.1rem;font-weight:800;text-transform:uppercase;font-style:italic;">${s.name}</h3></div><p style="font-size:0.78rem;color:var(--ink-dim);margin-bottom:12px;">${s.desc}</p><div style="display:flex;flex-wrap:wrap;gap:4px;">${s.tags.map(t=>`<span class="tag tag-red">${t}</span>`).join('')}</div></div>`).join('');
+
+    const projects=[
+      {id:'01',title:'SHARZO',desc:'Screen mirroring & control app for Android devices on Windows. Optimized for content creators and mobile gamers.',tech:['Batchfile','scrcpy','Android SDK'],github:'https://github.com/KAJUKATLIii/SHARZO'},
+      {id:'02',title:'NexusAttend',desc:'Modern student attendance app built with Node.js, Express, and ZXing Barcode scanner with Discord integration.',tech:['Node.js','Express','ZXing','Discord API'],github:'https://github.com/KAJUKATLIii/attendance'},
+      {id:'03',title:'Billcraft',desc:'High-performance Business Management System \u2014 inventory, sales, and professional PDF invoice generation.',tech:['PHP','MySQL','Glassmorphism','AJAX'],github:'https://github.com/KAJUKATLIii/billcraft'},
+    ];
+    document.getElementById('projects-grid').innerHTML=projects.map(p=>`<div class="card" style="display:flex;flex-direction:column;"><div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:16px;"><span class="card-num">${p.id}</span><div style="display:flex;gap:8px;"><a href="${p.github}" target="_blank" class="card-link">\u2318 GitHub</a><a href="${p.github}" target="_blank" class="card-link">\u2197 Demo</a></div></div><h3 class="card-title">${p.title}</h3><p class="card-desc" style="flex:1;">${p.desc}</p><div style="display:flex;flex-wrap:wrap;gap:4px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.05);">${p.tech.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`).join('');
+
+    const games=[
+      {name:'Euro Truck Simulator 2',rank:'Road Veteran',icon:'\u26A1',stats:'Recently Played',progress:75},
+      {name:'Valorant',rank:'Active',icon:'\uD83C\uDFAF',stats:'Competitive FPS',progress:85},
+      {name:'Chained Together',rank:'Co-op Mode',icon:'\uD83D\uDEE1',stats:'Recently Played',progress:60},
+    ];
+    document.getElementById('games-grid').innerHTML=games.map((g,i)=>`<div class="game-card"><div class="game-card-num">0${i+1}</div><div class="game-card-icon">${g.icon}</div><h3>${g.name}</h3><div class="game-card-meta rank">Rank: ${g.rank}</div><div class="game-card-meta intel">Intel: ${g.stats}</div><div class="game-progress"><div class="game-progress-track"><div class="game-progress-fill" data-width="${g.progress}" style="width:0%;"></div></div><div class="game-progress-val">${g.progress}%</div></div></div>`).join('');
+
+    const termBody=document.getElementById('terminal-body');const termInput=document.getElementById('terminal-input');
+    const commands={
+      help:()=>['Available commands: about, projects, skills, contact, music, cyber, whoami, clear'],
+      about:()=>['IDENTITY: Sharon Babu','ROLE: Full Stack Developer / Music Producer / Gamer','MISSION: Building immersive digital experiences with a HUD-first philosophy.'],
+      projects:()=>['ARCHIVE_INDEX:','1. SHARZO - Android Mirroring Utility','2. NEXUSATTEND - QR Auth Messenger','3. BILLCRAFT - Enterprise Logistics','4. CYBERMANAGEMENT - 3,513-page Security Study Book'],
+      skills:()=>['TECH_STACK: React, Vite, Node.js, Tailwind, Discord.js, Python, PHP, MySQL'],
+      music:()=>['ARTIST_ID: KAJUKATLI','GENRE: Soul R&B, Lofi, Indie','PLATFORMS: Spotify, Apple Music, JioSaavn, Amazon Music'],
+      whoami:()=>['You are a guest user at IP: 127.0.0.1. Access level: READ_ONLY'],
+      contact:()=>['UPLINK_CHANNELS: github.com/KAJUKATLIii, IG: @sharon_339955, Spotify: KAJUKATLI'],
+      cyber:()=>['PROJECT: Cybersecurity Management Study Book','PAGES: 3,513 | PARTS: 10 | WEEKS: 32','URL: https://0xsharon.github.io/cybermanagement'],
+    };
+    termInput.addEventListener('keydown',e=>{
+      if(e.key!=='Enter')return;const cmd=termInput.value.trim().toLowerCase();
+      const ul=document.createElement('div');ul.className='terminal-line user';ul.textContent=`sharon@portfolio:~$ ${termInput.value}`;termBody.appendChild(ul);
+      if(cmd==='clear'){termBody.innerHTML='';}
+      else if(commands[cmd]){commands[cmd]().forEach(l=>{const el=document.createElement('div');el.className='terminal-line system';el.textContent=l;termBody.appendChild(el);});}
+      else if(cmd){const el=document.createElement('div');el.className='terminal-line system';el.textContent=`Command not found: ${cmd}. Type "help" for a list of commands.`;termBody.appendChild(el);}
+      termInput.value='';termBody.scrollTop=termBody.scrollHeight;
+    });
+
+    function handleContactSubmit(e){
+      e.preventDefault();const name=document.getElementById('c-name').value;const email=document.getElementById('c-email').value;const msg=document.getElementById('c-message').value;
+      const s=encodeURIComponent(`Portfolio Contact from ${name}`);const b=encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${msg}`);
+      window.location.href=`mailto:sharonbabu80@gmail.com?subject=${s}&body=${b}`;
+      document.getElementById('c-submit').textContent='Transmission Sent \u2713';setTimeout(()=>{document.getElementById('c-submit').textContent='Initiate Transmission';},3000);
+    }
+  </script>
+</body>
+</html>
