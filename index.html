@@ -1820,56 +1820,30 @@
       </p>
     </div>
 
-    <div class="contact-grid">
-      <div class="contact-card">
-        <h3>REACH OUT DIRECTLY</h3>
-        <p>
-          I am actively exploring postgraduate opportunities abroad and technical software / security engineering engagements. Reach out through direct channels:
-        </p>
+    <div class="contact-card" style="max-width:860px; margin:0 auto;">
+      <h3>REACH OUT DIRECTLY</h3>
+      <p>
+        I am actively exploring postgraduate opportunities abroad and technical software / security engineering engagements. Reach out directly through the verified channels below:
+      </p>
 
-        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
-          <a href="mailto:sharonbabu80@gmail.com" class="btn btn-orange">
-            ✉ sharonbabu80@gmail.com
-          </a>
-          <a href="https://linkedin.com/in/sharonbabu17" target="_blank" class="btn">
-            in/sharonbabu17 ↗
-          </a>
-          <a href="https://github.com/0xSHARON" target="_blank" class="btn btn-dark">
-            github.com/0xSHARON ↗
-          </a>
-          <a href="tel:+918080939426" class="btn">
-            ☎ +91 8080939426 (Maharashtra, India)
-          </a>
-        </div>
-
-        <div style="background:#0e0e13; border:2px solid var(--border-color); padding:14px; font-size:0.75rem;">
-          <span style="font-weight:800; color:var(--orange);">CLEARANCE:</span> Verified BCA &amp; DCA Graduate // Open for global relocation &amp; international academia.
-        </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px; margin-bottom:24px;">
+        <a href="mailto:sharonbabu80@gmail.com" class="btn btn-orange" style="justify-content:center;">
+          ✉ sharonbabu80@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/sharonbabu17" target="_blank" class="btn" style="justify-content:center;">
+          in/sharonbabu17 ↗
+        </a>
+        <a href="https://github.com/0xSHARON" target="_blank" class="btn btn-dark" style="justify-content:center;">
+          github.com/0xSHARON ↗
+        </a>
+        <a href="tel:+918080939426" class="btn" style="justify-content:center;">
+          ☎ +91 8080939426
+        </a>
       </div>
 
-      <!-- CONTACT FORM -->
-      <form class="contact-card" onsubmit="submitMessage(event)">
-        <h3>SEND A MESSAGE</h3>
-        
-        <div class="form-group">
-          <label>01 // FULL NAME</label>
-          <input type="text" class="form-input-ctrl" id="formName" placeholder="YOUR NAME OR ORGANIZATION..." required>
-        </div>
-
-        <div class="form-group">
-          <label>02 // ELECTRONIC MAIL</label>
-          <input type="email" class="form-input-ctrl" id="formEmail" placeholder="CONTACT@DOMAIN.COM" required>
-        </div>
-
-        <div class="form-group">
-          <label>03 // MESSAGE</label>
-          <textarea class="form-input-ctrl" id="formMsg" placeholder="ENTER YOUR MESSAGE..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-orange" id="btnSend" style="width:100%; justify-content:center;">
-          SEND MESSAGE →
-        </button>
-      </form>
+      <div style="background:#0e0e13; border:2px solid var(--border-color); padding:16px; font-size:0.78rem; line-height:1.6;">
+        <span style="font-weight:800; color:var(--orange);">STATUS:</span> Verified BCA &amp; DCA Graduate // Open for global relocation &amp; international academia // Based in Maharashtra, India.
+      </div>
     </div>
   </section>
 
@@ -2147,28 +2121,6 @@
       termInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     }
 
-    // CONTACT FORM HANDLER
-    function submitMessage(e) {
-      e.preventDefault();
-      const name = document.getElementById('formName').value;
-      const email = document.getElementById('formEmail').value;
-      const msg = document.getElementById('formMsg').value;
-
-      const subject = encodeURIComponent(`[0xSHARON Portfolio Contact] from ${name}`);
-      const body = encodeURIComponent(`NAME: ${name}\nEMAIL: ${email}\n\nMESSAGE:\n${msg}`);
-
-      window.location.href = `mailto:sharonbabu80@gmail.com?subject=${subject}&body=${body}`;
-
-      const btn = document.getElementById('btnSend');
-      btn.textContent = 'MESSAGE SENT ✓';
-      btn.style.background = '#22c55e';
-      btn.style.color = '#000000';
-      setTimeout(() => {
-        btn.textContent = 'SEND MESSAGE →';
-        btn.style.background = 'var(--orange)';
-        btn.style.color = '#000000';
-      }, 3500);
-    }
   </script>
 </body>
 </html>
