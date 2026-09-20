@@ -391,68 +391,69 @@
     .hero-photo-wrapper {
       flex-shrink: 0;
       align-self: flex-end;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .hero-photo-frame {
       position: relative;
-      background: linear-gradient(180deg, #181822 0%, #0e0e14 100%);
-      border: 3px solid var(--border-color);
-      box-shadow: 6px 6px 0px #ff4b00;
-      overflow: hidden;
+      margin-bottom: -38px;
+      margin-right: -6px;
+      z-index: 5;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      justify-content: center;
+      align-items: flex-end;
     }
-    .hero-photo-frame:hover {
-      border-color: var(--orange);
-      transform: translate(-3px, -3px);
-      box-shadow: 8px 8px 0px #ff4b00;
+    .hero-photo-wrapper::before {
+      content: '';
+      position: absolute;
+      bottom: 30px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 94, 26, 0.3) 0%, rgba(255, 94, 26, 0.08) 52%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(12px);
     }
-    .hero-photo-img {
-      width: 250px;
-      height: 310px;
-      object-fit: cover;
-      object-position: top center;
+    .hero-popout-img {
+      width: 290px;
+      max-width: 100%;
+      height: auto;
       display: block;
-      filter: contrast(1.05);
-      transition: transform 0.25s ease;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(-10px 14px 0px rgba(255, 94, 26, 0.5)) drop-shadow(0 22px 35px rgba(0, 0, 0, 0.95));
+      transform: perspective(900px) rotateY(-7deg) rotateX(2deg) translateY(0px);
+      transform-origin: bottom center;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
+      cursor: pointer;
     }
-    .hero-photo-frame:hover .hero-photo-img {
-      transform: scale(1.04);
-    }
-    .hero-photo-tag {
-      width: 100%;
-      background: var(--orange);
-      color: #000000;
-      font-size: 0.65rem;
-      font-weight: 900;
-      font-family: var(--font-mono);
-      letter-spacing: 1.5px;
-      text-align: center;
-      padding: 4px 8px;
-      border-top: 2px solid #000000;
+    .hero-popout-img:hover {
+      transform: perspective(900px) rotateY(0deg) rotateX(0deg) translateY(-14px) scale(1.06);
+      filter: drop-shadow(-14px 18px 0px #ff5e1a) drop-shadow(0 32px 50px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(255, 94, 26, 0.65));
     }
     @media (max-width: 1200px) {
-      .hero-photo-img {
-        width: 210px;
-        height: 270px;
+      .hero-popout-img {
+        width: 240px;
+      }
+      .hero-photo-wrapper::before {
+        width: 190px;
+        height: 190px;
       }
     }
-    @media (max-width: 820px) {
+    @media (max-width: 860px) {
       .hero-layout {
         flex-direction: column-reverse;
-        align-items: flex-start;
+        align-items: center;
         gap: 24px;
       }
       .hero-photo-wrapper {
         align-self: center;
+        margin-bottom: 0;
+        margin-right: 0;
       }
-      .hero-photo-img {
-        width: 230px;
-        height: 280px;
+      .hero-popout-img {
+        width: 240px;
+        transform: none;
+      }
+      .hero-popout-img:hover {
+        transform: translateY(-8px) scale(1.04);
       }
     }
     .badge-row {
@@ -1425,12 +1426,9 @@
             </div>
           </div>
 
-          <!-- SHARON BABU PORTRAIT (PHOTO 2) -->
+          <!-- SHARON BABU 3D POP-OUT SILHOUETTE -->
           <div class="hero-photo-wrapper">
-            <div class="hero-photo-frame">
-              <img src="sharon.png" alt="Sharon Babu Thottian" class="hero-photo-img">
-              <div class="hero-photo-tag">// SHARON BABU //</div>
-            </div>
+            <img src="sharon.png" alt="Sharon Babu Thottian" class="hero-popout-img">
           </div>
         </div>
       </div>
