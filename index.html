@@ -3,623 +3,2364 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHARON BABU // 0xSHARON</title>
-  <meta name="description" content="Sharon Babu — Developer, Music Producer (KAJUKATLI), Gamer. Portfolio showcasing projects, skills, Spotify artist profile, and cybersecurity work.">
+  <title>0xSHARON // SHARON BABU — BRUTALIST PORTFOLIO</title>
+  <meta name="description" content="Official Brutalist Portfolio of Sharon Babu (0xSHARON) — Developer, Cybersecurity Researcher, Gamer, and Music Producer (KAJUKATLI). Showcasing SHARZO, CyberProbe, Billcraft, and the 3,513-page Cybersecurity Management Book.">
+  <meta name="theme-color" content="#FFE500">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="0xSHARON // SHARON BABU — BRUTALIST ARCHIVE">
+  <meta property="og:description" content="Developer, Cybersecurity Researcher, Music Producer (KAJUKATLI). Featuring SHARZO, CyberProbe, Billcraft & 3,513-Page Cyber Management Curriculum.">
+  <meta property="og:url" content="https://0xsharon.github.io/">
+  <meta property="og:type" content="website">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;0,800;1,700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&family=Space+Grotesk:wght@600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #050505;
-      --bg-card: #0a0a0a;
-      --ink: #e8e4db;
-      --ink-dim: #6b6966;
-      --red: #dc2626;
-      --red-glow: rgba(220,38,38,0.4);
-      --gold: #f59e0b;
-      --gold-glow: rgba(245,158,11,0.3);
-      --border: #1e1e1e;
-      --border-hover: #333;
-      --mono: 'JetBrains Mono', monospace;
-      --display: 'Syne', sans-serif;
+      --bg: #09090b;
+      --bg-surface: #121216;
+      --bg-card: #18181f;
+      --bg-card-hover: #1f1f28;
+      
+      --yellow: #FFE500;
+      --yellow-glow: rgba(255, 229, 0, 0.45);
+      --red: #FF2E2E;
+      --red-glow: rgba(255, 46, 46, 0.45);
+      --cyan: #00F0FF;
+      --green: #00FF66;
+      
+      --ink: #FFFFFF;
+      --ink-dim: #9E9EA8;
+      --ink-muted: #62626F;
+      
+      --border: #2E2E38;
+      --border-dark: #000000;
+      --border-bright: #FFFFFF;
+      
+      --shadow-hard: 5px 5px 0px #000000;
+      --shadow-yellow: 5px 5px 0px var(--yellow);
+      --shadow-red: 5px 5px 0px var(--red);
+      --shadow-cyan: 5px 5px 0px var(--cyan);
+      --shadow-white: 5px 5px 0px #FFFFFF;
+      
+      --font-display: 'Syne', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-ui: 'Space Grotesk', sans-serif;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important; /* STRICT BRUTALISM: NO ROUNDED CORNERS */
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
     body {
-      background: var(--bg); color: var(--ink);
-      font-family: var(--mono); line-height: 1.5; overflow-x: hidden;
+      background-color: var(--bg);
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 40px 40px;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
-    ::selection { background: var(--red); color: #fff; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: #1e293b; }
-    ::-webkit-scrollbar-thumb:hover { background: #334155; }
 
-    .scanline {
-      position: fixed; top: 0; left: 0; width: 100%; height: 2px;
-      background: rgba(220,38,38,0.12); box-shadow: 0 0 12px var(--red-glow);
-      z-index: 200; pointer-events: none; animation: scanMove 8s linear infinite;
+    ::selection {
+      background: var(--yellow);
+      color: #000000;
     }
-    @keyframes scanMove { 0% { transform: translateY(-100vh); } 100% { transform: translateY(100vh); } }
-    .vignette {
-      position: fixed; inset: 0;
-      background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.55) 150%);
-      pointer-events: none; z-index: 90;
-    }
-    #progress-bar {
-      position: fixed; top: 0; left: 0; height: 3px;
-      background: var(--red); z-index: 201; box-shadow: 0 0 8px var(--red-glow);
-      transition: width 0.1s; width: 0%;
-    }
-    .hazard-tape {
-      height: 12px; width: 100%;
-      background: repeating-linear-gradient(-45deg, var(--bg), var(--bg) 10px, var(--red) 10px, var(--red) 20px);
-    }
-    .marquee-bar {
-      background: #0a0a0a; color: var(--ink-dim); padding: 6px 0;
-      font-size: 0.7rem; font-weight: 800; letter-spacing: 2px;
-      text-transform: uppercase; overflow: hidden; white-space: nowrap;
-      border-bottom: 1px solid var(--border);
-    }
-    .marquee-inner { display: inline-block; animation: marquee 28s linear infinite; }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000000;
+      border-left: 2px solid var(--border);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--yellow);
+      border: 2px solid #000000;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--red);
+    }
+
+    /* VIGNETTE & INDUSTRIAL CRT SCANLINES */
+    .scanline-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--yellow);
+      box-shadow: 0 0 16px var(--yellow-glow);
+      z-index: 9999;
+      pointer-events: none;
+      animation: scanAnim 7s linear infinite;
+    }
+    @keyframes scanAnim {
+      0% { transform: translateY(-100vh); }
+      100% { transform: translateY(100vh); }
+    }
+
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--red);
+      z-index: 10000;
+      width: 0%;
+      box-shadow: 0 0 10px var(--red-glow);
+      transition: width 0.08s linear;
+    }
+
+    /* INDUSTRIAL HAZARD TAPE */
+    .hazard-stripe {
+      height: 14px;
+      width: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        #000000,
+        #000000 12px,
+        var(--yellow) 12px,
+        var(--yellow) 24px
+      );
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+    }
+
+    .hazard-stripe-red {
+      height: 14px;
+      width: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        #000000,
+        #000000 12px,
+        var(--red) 12px,
+        var(--red) 24px
+      );
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+    }
+
+    /* TOP MARQUEE TICKER */
+    .marquee-container {
+      background: #000000;
+      color: var(--yellow);
+      border-bottom: 2px solid var(--border);
+      padding: 7px 0;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marqueeRoll 32s linear infinite;
+    }
+    @keyframes marqueeRoll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* BRUTALIST NAVIGATION */
     .nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(5,5,5,0.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border); padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      background: #000000;
+      border-bottom: 3px solid var(--ink);
+      padding: 0 20px;
     }
     .nav-inner {
-      max-width: 1320px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between; height: 56px;
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
     }
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
-    .nav-brand-box {
-      background: var(--red); color: #fff; padding: 3px 8px;
-      font-family: var(--display); font-size: 0.85rem; font-weight: 800;
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
     }
-    .nav-brand-text { font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: 1px; }
-    .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
-    .nav-links a, .nav-links button {
-      font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.8px;
-      padding: 6px 12px; border: 1px solid var(--border);
-      background: transparent; color: var(--ink); text-decoration: none;
-      transition: all 0.15s; cursor: pointer;
+    .logo-badge {
+      background: var(--yellow);
+      color: #000000;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1rem;
+      padding: 4px 10px;
+      border: 2px solid #000000;
+      box-shadow: 3px 3px 0px #FFFFFF;
+      letter-spacing: 1px;
     }
-    .nav-links a:hover, .nav-links button:hover { background: var(--red); color: #fff; border-color: var(--red); }
-    .nav-links .btn-gold:hover { background: var(--gold); border-color: var(--gold); color: #000; }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-mobile-btn { display: block !important; }
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
-    .nav-mobile-btn {
-      display: none; background: var(--red); color: #fff;
-      border: none; font-family: var(--mono); font-size: 0.8rem;
-      font-weight: 800; padding: 6px 14px; cursor: pointer;
+    .logo-text span {
+      color: var(--yellow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+    .nav-btn {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 14px;
+      background: #111116;
+      color: var(--ink);
+      border: 2px solid var(--border);
+      text-decoration: none;
+      transition: all 0.12s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-btn:hover {
+      background: var(--yellow);
+      color: #000000;
+      border-color: #000000;
+      transform: translate(-2px, -2px);
+      box-shadow: 3px 3px 0px #FFFFFF;
+    }
+    .nav-btn.active {
+      background: var(--red);
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+    }
+    .nav-btn-highlight {
+      background: var(--yellow);
+      color: #000000;
+      border-color: #000000;
+      box-shadow: 3px 3px 0px var(--red);
+    }
+    .nav-btn-highlight:hover {
+      background: var(--red);
+      color: #FFFFFF;
+      box-shadow: 3px 3px 0px var(--yellow);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: var(--yellow);
+      color: #000000;
+      border: 2px solid #FFFFFF;
+      font-family: var(--font-mono);
+      font-weight: 900;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      cursor: pointer;
     }
     .mobile-menu {
-      display: none; position: fixed; inset: 0; z-index: 150;
-      background: rgba(5,5,5,0.98); flex-direction: column;
-      align-items: center; justify-content: center; gap: 20px;
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #050507;
+      z-index: 1000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      border: 6px solid var(--yellow);
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      font-family: var(--display); font-size: 1.5rem; font-weight: 800;
-      color: var(--ink); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; transition: color 0.15s;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 24px;
+      border: 3px solid var(--border);
+      width: 80%;
+      text-align: center;
+      background: #121218;
     }
-    .mobile-menu a:hover { color: var(--red); }
+    .mobile-menu a:hover {
+      background: var(--yellow);
+      color: #000000;
+      border-color: #000000;
+    }
     .mobile-close {
-      position: absolute; top: 20px; right: 24px;
-      background: none; border: none; color: var(--red); font-size: 2rem; cursor: pointer; font-family: var(--mono);
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: var(--red);
+      color: #FFFFFF;
+      border: 2px solid #FFFFFF;
+      padding: 6px 14px;
+      font-size: 1.5rem;
+      font-family: var(--font-mono);
+      font-weight: 900;
+      cursor: pointer;
     }
 
-    .section { max-width: 1320px; margin: 0 auto; padding: 100px 24px; }
-    .section-header { margin-bottom: 48px; }
-    .section-tag {
-      display: inline-block; font-size: 0.65rem; font-weight: 800;
-      color: var(--red); letter-spacing: 3px; text-transform: uppercase;
-      border: 1px solid var(--red); padding: 4px 12px; margin-bottom: 12px;
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 24px 100px;
+      border-bottom: 3px solid var(--ink);
+      background: radial-gradient(circle at 50% 30%, rgba(255, 229, 0, 0.08) 0%, transparent 70%);
+    }
+    .hero-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .hero-stamp {
+      background: #000000;
+      border: 2px solid var(--yellow);
+      color: var(--yellow);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 4px 14px;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0px #000000;
+    }
+    .hero-stamp.red {
+      border-color: var(--red);
+      color: var(--red);
+    }
+    .hero-stamp.live {
+      border-color: var(--green);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .live-pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.7); }
+    }
+
+    .hero-title-wrap {
+      margin-bottom: 24px;
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 11vw, 8.5rem);
+      font-weight: 900;
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -3px;
+      color: var(--ink);
+      text-shadow: 4px 4px 0px #000000;
+    }
+    .hero-name .yellow {
+      color: var(--yellow);
+      background: #000000;
+      padding: 0 16px;
+      border: 3px solid var(--yellow);
+      display: inline-block;
+      box-shadow: 6px 6px 0px var(--red);
+      margin-top: 10px;
+    }
+    .hero-tagline-box {
+      background: #000000;
+      border: 2px solid var(--border);
+      padding: 12px 24px;
+      margin: 20px auto 36px;
+      max-width: 760px;
+      box-shadow: 4px 4px 0px var(--border);
+    }
+    .hero-tagline {
+      font-family: var(--font-mono);
+      font-size: clamp(0.85rem, 2vw, 1.15rem);
+      color: var(--ink-dim);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .hero-tagline strong {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+    }
+    .cursor-blink {
+      display: inline-block;
+      width: 10px;
+      height: 18px;
+      background: var(--yellow);
+      margin-left: 6px;
+      vertical-align: middle;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* BRUTALIST BUTTONS */
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 14px 28px;
+      border: 3px solid #000000;
+      background: #FFFFFF;
+      color: #000000;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: var(--shadow-hard);
+      transition: all 0.1s ease;
+      position: relative;
+    }
+    .btn:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0px #000000;
+    }
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px #000000;
+    }
+    .btn-yellow {
+      background: var(--yellow);
+      color: #000000;
+      border-color: #000000;
+      box-shadow: 5px 5px 0px #FFFFFF;
+    }
+    .btn-yellow:hover {
+      box-shadow: 8px 8px 0px var(--red);
+    }
+    .btn-red {
+      background: var(--red);
+      color: #FFFFFF;
+      border-color: #000000;
+      box-shadow: 5px 5px 0px #FFFFFF;
+    }
+    .btn-red:hover {
+      box-shadow: 8px 8px 0px var(--yellow);
+    }
+    .btn-dark {
+      background: #121218;
+      color: #FFFFFF;
+      border: 3px solid var(--border);
+      box-shadow: 5px 5px 0px var(--yellow);
+    }
+    .btn-dark:hover {
+      border-color: #FFFFFF;
+      box-shadow: 8px 8px 0px #FFFFFF;
+    }
+
+    /* SECTION CONTAINERS */
+    .section {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 90px 24px;
+    }
+    .section-head {
+      margin-bottom: 48px;
+      position: relative;
+    }
+    .section-label {
+      display: inline-block;
+      background: var(--yellow);
+      color: #000000;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      text-transform: uppercase;
+      border: 2px solid #000000;
+      box-shadow: 3px 3px 0px #FFFFFF;
+      margin-bottom: 12px;
+    }
+    .section-label.red {
+      background: var(--red);
+      color: #FFFFFF;
     }
     .section-title {
-      font-family: var(--display); font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800; text-transform: uppercase; line-height: 1; letter-spacing: -2px;
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      color: var(--ink);
     }
-    .section-sub { font-size: 0.78rem; color: var(--ink-dim); margin-top: 8px; }
+    .section-desc {
+      font-size: 0.85rem;
+      color: var(--ink-dim);
+      margin-top: 10px;
+      max-width: 720px;
+    }
 
-    .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center;
-      padding: 100px 24px; position: relative;
+    /* FILTER BAR FOR REPOS */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--border);
     }
-    .hero-status {
-      display: inline-block; padding: 4px 14px;
-      border: 1px solid rgba(220,38,38,0.3); background: rgba(220,38,38,0.05);
-      font-size: 0.6rem; font-weight: 800; color: var(--red);
-      letter-spacing: 4px; text-transform: uppercase; margin-bottom: 32px;
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      background: #111116;
+      color: var(--ink-dim);
+      border: 2px solid var(--border);
+      cursor: pointer;
+      transition: all 0.1s ease;
     }
-    .hero h1 {
-      font-family: var(--display); font-weight: 800;
-      font-size: clamp(4rem, 12vw, 10rem);
-      line-height: 0.85; text-transform: uppercase; font-style: italic; letter-spacing: -4px;
+    .filter-btn:hover {
+      color: #FFFFFF;
+      border-color: var(--yellow);
+      background: #1a1a24;
     }
-    .hero h1 .accent {
-      background: linear-gradient(135deg, var(--red), var(--gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 15px var(--red-glow));
+    .filter-btn.active {
+      background: var(--yellow);
+      color: #000000;
+      border-color: #000000;
+      box-shadow: 4px 4px 0px #FFFFFF;
     }
-    .hero-tagline { font-size: 1.2rem; color: var(--ink-dim); margin: 32px 0 48px; letter-spacing: 3px; height: 32px; }
-    .hero-tagline .cursor {
-      display: inline-block; width: 2px; height: 22px; background: var(--red);
-      margin-left: 4px; vertical-align: middle; animation: blink 1s infinite;
-    }
-    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
 
-    .btn {
-      font-family: var(--mono); font-size: 0.82rem; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 1px; padding: 14px 28px;
-      border: 2px solid var(--border); background: transparent;
-      color: var(--ink); cursor: pointer; text-decoration: none; transition: all 0.15s; display: inline-block;
+    /* REPOSITORY CARDS GRID */
+    .repos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
     }
-    .btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--red); }
-    .btn-red { background: var(--red); color: #fff; border-color: var(--red); }
-    .btn-red:hover { box-shadow: 6px 6px 0 rgba(220,38,38,0.3); }
-    .btn-gold { border-color: var(--gold); color: var(--gold); }
-    .btn-gold:hover { background: var(--gold); color: #000; box-shadow: 4px 4px 0 var(--gold-glow); }
+    @media (max-width: 480px) {
+      .repos-grid { grid-template-columns: 1fr; }
+    }
 
-    .card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      padding: 24px; position: relative; transition: all 0.2s;
+    .repo-card {
+      background: var(--bg-card);
+      border: 3px solid var(--border);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.15s ease;
+      box-shadow: 6px 6px 0px #000000;
     }
-    .card:hover { border-color: var(--border-hover); transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--red-glow); }
-    .card-num {
-      font-family: var(--display); font-size: 2.5rem; font-weight: 800;
-      color: rgba(255,255,255,0.03); line-height: 1; transition: color 0.3s;
+    .repo-card:hover {
+      border-color: var(--yellow);
+      transform: translate(-3px, -3px);
+      box-shadow: 10px 10px 0px var(--yellow);
     }
-    .card:hover .card-num { color: rgba(220,38,38,0.15); }
-    .card-title {
-      font-family: var(--display); font-size: 1.3rem; font-weight: 800;
-      text-transform: uppercase; font-style: italic; letter-spacing: -0.5px; margin: 8px 0;
+    .repo-card.featured {
+      border-color: var(--red);
+      background: #161217;
+      box-shadow: 6px 6px 0px var(--red);
     }
-    .card-desc { font-size: 0.78rem; color: var(--ink-dim); line-height: 1.5; margin-bottom: 16px; }
-    .tag {
-      display: inline-block; font-size: 0.6rem; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 1px;
-      padding: 2px 8px; border: 1px solid var(--border); color: var(--ink-dim); margin: 2px;
+    .repo-card.featured:hover {
+      box-shadow: 10px 10px 0px var(--yellow);
     }
-    .tag-red { border-color: rgba(220,38,38,0.3); color: rgba(220,38,38,0.7); background: rgba(220,38,38,0.05); }
-    .card-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 12px; border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03); color: var(--ink);
-      font-size: 0.7rem; text-decoration: none; font-weight: 700; transition: all 0.15s;
-    }
-    .card-link:hover { border-color: var(--red); color: var(--red); }
 
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
-    .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; }
-    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
-    .about-bio { padding: 32px; }
-    .about-bio h3 {
-      font-family: var(--display); font-size: 1.6rem; font-weight: 800;
-      color: var(--red); text-transform: uppercase; font-style: italic;
-      margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+    .repo-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    .about-bio h3::before { content: ''; display: block; width: 32px; height: 2px; background: var(--red); }
-    .about-bio p { font-size: 0.85rem; color: var(--ink-dim); line-height: 1.7; }
-    .progress-bar-container { margin-top: 24px; }
-    .progress-label { font-size: 0.6rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
-    .progress-track { width: 100%; height: 4px; background: rgba(255,255,255,0.05); overflow: hidden; }
-    .progress-fill { height: 100%; background: var(--red); width: 0%; transition: width 1.5s ease; }
+    .repo-index {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      transition: color 0.15s;
+    }
+    .repo-card:hover .repo-index {
+      color: var(--yellow);
+    }
+    .repo-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border: 2px solid #000;
+    }
+    .badge-yellow { background: var(--yellow); color: #000; }
+    .badge-red { background: var(--red); color: #fff; }
+    .badge-cyan { background: var(--cyan); color: #000; }
+    .badge-green { background: var(--green); color: #000; }
 
-    .music-box {
-      max-width: 800px; margin: 0 auto; padding: 28px;
-      border: 1px solid var(--border); background: rgba(255,255,255,0.02); position: relative;
+    .repo-title {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+      color: var(--ink);
     }
-    .music-box::before {
-      content: ''; position: absolute; top: 0; right: 0;
-      width: 32px; height: 32px; border-top: 2px solid rgba(220,38,38,0.3); border-right: 2px solid rgba(220,38,38,0.3);
+    .repo-slug {
+      font-size: 0.72rem;
+      color: var(--yellow);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .music-box::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 32px; height: 32px; border-bottom: 2px solid rgba(220,38,38,0.3); border-left: 2px solid rgba(220,38,38,0.3);
+    .repo-slug a {
+      color: inherit;
+      text-decoration: none;
     }
-    .music-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
-    .music-live { display: flex; align-items: center; gap: 8px; font-size: 0.6rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 3px; }
-    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .music-platforms { display: flex; gap: 8px; }
-    .music-platforms a {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+    .repo-slug a:hover {
+      text-decoration: underline;
     }
-    .music-platforms a:hover { background: rgba(245,158,11,0.2); border-color: var(--gold); }
-    .music-platforms a img { width: 16px; height: 16px; object-fit: contain; }
-    .spotify-embed { width: 100%; border: none; min-height: 352px; border-radius: 12px; }
 
-    .gaming-grid { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
-    @media (max-width: 900px) { .gaming-grid { grid-template-columns: 1fr; } }
-    .gaming-sidebar { display: flex; flex-direction: column; gap: 16px; }
-    .gamer-ids { padding: 20px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); position: relative; }
-    .gamer-ids::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--red); }
-    .gamer-ids h4 { font-size: 0.6rem; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 16px; }
-    .gamer-id-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem;
+    .repo-desc {
+      font-size: 0.82rem;
+      color: var(--ink-dim);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
     }
-    .gamer-id-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .gamer-id-platform { display: flex; align-items: center; gap: 6px; color: var(--ink-dim); font-size: 0.6rem; text-transform: uppercase; }
-    .gamer-id-platform img { width: 14px; height: 14px; object-fit: contain; }
-    .gamer-id-value { color: var(--gold); font-weight: 700; }
-    .gamer-id-value a { color: var(--gold); text-decoration: none; }
-    .gamer-id-value a:hover { color: #fff; }
-    .steam-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .steam-stat { text-align: center; padding: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
-    .steam-stat-val { font-size: 1.2rem; font-weight: 800; }
-    .steam-stat-label { font-size: 0.55rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 2px; }
-    .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-    .game-card { padding: 24px; border: 1px solid var(--border); background: var(--bg-card); position: relative; transition: all 0.2s; }
-    .game-card:hover { border-color: var(--gold); }
+
+    .repo-features-list {
+      list-style: none;
+      margin-bottom: 20px;
+      padding: 12px 14px;
+      background: #0e0e13;
+      border: 1px solid var(--border);
+    }
+    .repo-features-list li {
+      font-size: 0.74rem;
+      color: #d0d0d8;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .repo-features-list li:last-child { margin-bottom: 0; }
+    .repo-features-list li::before {
+      content: '■';
+      color: var(--yellow);
+      font-size: 0.6rem;
+    }
+
+    .repo-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 24px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .tag-pill {
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      background: #1c1c24;
+      border: 1px solid var(--border);
+      color: var(--ink-dim);
+    }
+    .tag-pill.highlight {
+      border-color: var(--yellow);
+      color: var(--yellow);
+      background: rgba(255, 229, 0, 0.06);
+    }
+
+    .repo-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px 16px;
+      border: 2px solid #000000;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.1s ease;
+      cursor: pointer;
+    }
+    .action-btn-gh {
+      background: #FFFFFF;
+      color: #000000;
+      box-shadow: 3px 3px 0px #000000;
+    }
+    .action-btn-gh:hover {
+      background: var(--yellow);
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px #FFFFFF;
+    }
+    .action-btn-live {
+      background: var(--yellow);
+      color: #000000;
+      box-shadow: 3px 3px 0px #FFFFFF;
+    }
+    .action-btn-live:hover {
+      background: var(--red);
+      color: #FFFFFF;
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px var(--yellow);
+    }
+
+    /* CYBERSECURITY FEATURED MEGA CARD */
+    .featured-mega-card {
+      margin-top: 50px;
+      background: #110e14;
+      border: 4px solid var(--red);
+      padding: 40px;
+      position: relative;
+      box-shadow: 8px 8px 0px #000000;
+    }
+    .mega-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .mega-badge {
+      background: var(--red);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      padding: 4px 14px;
+      border: 2px solid #000;
+      text-transform: uppercase;
+    }
+    .mega-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .mega-desc {
+      font-size: 0.9rem;
+      color: var(--ink-dim);
+      max-width: 860px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .stats-matrix {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .stat-box {
+      background: #09090d;
+      border: 2px solid var(--border);
+      padding: 16px 20px;
+      text-align: left;
+    }
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .stat-val.red { color: var(--red); }
+    .stat-lbl {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--ink-muted);
+      margin-top: 6px;
+    }
+
+    /* INTERACTIVE TOOL: SHARZO CLI GENERATOR */
+    .cli-generator-box {
+      margin-top: 48px;
+      background: #0c0c11;
+      border: 3px solid var(--yellow);
+      padding: 32px;
+      box-shadow: 6px 6px 0px #000000;
+    }
+    .cli-gen-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cli-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .cli-field label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .cli-select {
+      width: 100%;
+      background: #181822;
+      color: #FFFFFF;
+      border: 2px solid var(--border);
+      padding: 10px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      outline: none;
+    }
+    .cli-select:focus {
+      border-color: var(--yellow);
+    }
+    .cli-output-row {
+      display: flex;
+      background: #000000;
+      border: 2px solid var(--border);
+      padding: 14px 18px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .cli-output-cmd {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--green);
+      word-break: break-all;
+    }
+    .copy-btn {
+      background: var(--yellow);
+      color: #000;
+      border: 2px solid #000;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .copy-btn:hover {
+      background: #FFFFFF;
+    }
+
+    /* ABOUT & SKILLS BRUTALIST GRID */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 32px;
+    }
+    @media (max-width: 960px) {
+      .about-layout { grid-template-columns: 1fr; }
+    }
+    .about-bio-card {
+      background: var(--bg-card);
+      border: 3px solid var(--border);
+      padding: 32px;
+      box-shadow: 6px 6px 0px #000000;
+    }
+    .about-bio-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: var(--yellow);
+    }
+    .about-bio-card p {
+      font-size: 0.84rem;
+      color: var(--ink-dim);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .dossier-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      font-size: 0.74rem;
+    }
+    .dossier-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .dossier-table td {
+      padding: 8px 4px;
+    }
+    .dossier-table td:first-child {
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1px;
+      width: 40%;
+    }
+    .dossier-table td:last-child {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    .skills-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .skill-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      padding: 20px;
+      box-shadow: 4px 4px 0px #000000;
+      transition: all 0.12s ease;
+    }
+    .skill-card:hover {
+      border-color: var(--yellow);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--yellow);
+    }
+    .skill-icon-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .skill-icon-box {
+      width: 38px;
+      height: 38px;
+      background: #000;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .skill-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .skill-desc {
+      font-size: 0.75rem;
+      color: var(--ink-dim);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    /* MUSIC SECTION (SPOTIFY + KAJUKATLI) */
+    .music-container {
+      background: #0d0d12;
+      border: 3px solid var(--border);
+      padding: 36px;
+      box-shadow: 8px 8px 0px #000000;
+      position: relative;
+    }
+    .music-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .artist-branding {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .artist-badge {
+      background: #1DB954;
+      color: #000000;
+      font-weight: 900;
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      letter-spacing: 1px;
+    }
+    .artist-name {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .platforms-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .platform-link {
+      background: #000000;
+      border: 2px solid var(--border);
+      color: var(--ink);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-decoration: none;
+      padding: 6px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.1s ease;
+    }
+    .platform-link:hover {
+      border-color: #1DB954;
+      background: #1a1a24;
+      transform: translate(-2px, -2px);
+      box-shadow: 3px 3px 0px #1DB954;
+    }
+    .platform-link img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
+    .spotify-frame {
+      width: 100%;
+      height: 380px;
+      border: 3px solid #000;
+      box-shadow: 4px 4px 0px #000;
+    }
+
+    /* GAMING SECTION */
+    .gaming-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 900px) {
+      .gaming-layout { grid-template-columns: 1fr; }
+    }
+    .gamer-profile-card {
+      background: var(--bg-card);
+      border: 3px solid var(--border);
+      padding: 24px;
+      box-shadow: 6px 6px 0px #000000;
+    }
+    .gamer-profile-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .id-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.75rem;
+    }
+    .id-platform {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-dim);
+      font-weight: 700;
+    }
+    .id-val {
+      color: var(--yellow);
+      font-weight: 800;
+    }
+    .id-val a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .id-val a:hover {
+      text-decoration: underline;
+    }
+    .games-collection {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .game-item-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      padding: 20px;
+      position: relative;
+      box-shadow: 4px 4px 0px #000000;
+    }
+    .game-item-card:hover {
+      border-color: var(--red);
+      box-shadow: 6px 6px 0px var(--red);
+    }
     .game-card-num {
-      position: absolute; top: 0; right: 0; padding: 8px 12px;
-      border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); color: rgba(245,158,11,0.3); font-size: 0.7rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #000;
+      border-left: 2px solid var(--border);
+      border-bottom: 2px solid var(--border);
+      padding: 4px 10px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--yellow);
     }
-    .game-card-icon { font-size: 1.5rem; margin-bottom: 16px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); background: rgba(255,255,255,0.03); }
-    .game-card h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 800; text-transform: uppercase; font-style: italic; margin-bottom: 8px; transition: color 0.2s; }
-    .game-card:hover h3 { color: var(--gold); }
-    .game-card-meta { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
-    .game-card-meta.rank { color: var(--red); }
-    .game-card-meta.intel { color: var(--ink-dim); }
-    .game-progress { margin-top: 16px; }
-    .game-progress-track { height: 3px; background: rgba(255,255,255,0.05); overflow: hidden; }
-    .game-progress-fill { height: 100%; background: rgba(245,158,11,0.3); transition: width 1.5s ease; }
-    .game-progress-val { font-size: 0.55rem; color: var(--ink-dim); text-align: right; margin-top: 4px; }
-
-    .terminal-wrap {
-      max-width: 900px; margin: 0 auto; background: rgba(0,0,0,0.8);
-      border: 1px solid rgba(220,38,38,0.3); overflow: hidden; position: relative;
+    .game-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin: 12px 0 6px;
     }
-    .terminal-head {
-      background: rgba(220,38,38,0.08); border-bottom: 1px solid rgba(220,38,38,0.2);
-      padding: 8px 16px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .terminal-dots { display: flex; gap: 6px; }
-    .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .terminal-dot.r { background: rgba(220,38,38,0.5); }
-    .terminal-dot.y { background: rgba(245,158,11,0.5); }
-    .terminal-dot.g { background: rgba(34,197,94,0.5); }
-    .terminal-label { font-size: 0.6rem; color: rgba(220,38,38,0.6); text-transform: uppercase; letter-spacing: 2px; }
-    .terminal-body { padding: 24px; height: 380px; overflow-y: auto; font-size: 0.82rem; }
-    .terminal-body::-webkit-scrollbar { width: 4px; }
-    .terminal-body::-webkit-scrollbar-thumb { background: #333; }
-    .terminal-line { margin-bottom: 4px; }
-    .terminal-line.system { color: #94a3b8; }
-    .terminal-line.user { color: var(--gold); }
-    .terminal-input-row { display: flex; align-items: center; gap: 8px; color: var(--red); margin-top: 8px; }
-    .terminal-input-row span { white-space: nowrap; }
-    .terminal-input {
-      flex: 1; background: transparent; border: none; outline: none;
-      color: var(--ink); font-family: var(--mono); font-size: 0.82rem; caret-color: var(--red);
-    }
-    .terminal-scanlines {
-      position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
-      background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.1) 50%),
-        linear-gradient(90deg, rgba(255,0,0,0.02), rgba(0,255,0,0.01), rgba(0,0,255,0.02));
-      background-size: 100% 4px, 3px 100%;
+    .game-tag {
+      font-size: 0.65rem;
+      color: var(--red);
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
-    .contact-left h3 {
-      font-family: var(--display); font-size: 2rem; font-weight: 800;
-      text-transform: uppercase; font-style: italic; margin-bottom: 16px;
+    /* INTERACTIVE TERMINAL */
+    .terminal-container {
+      background: #050508;
+      border: 3px solid var(--yellow);
+      box-shadow: 8px 8px 0px #000000;
+      overflow: hidden;
+      max-width: 980px;
+      margin: 0 auto;
     }
-    .contact-left p { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.7; margin-bottom: 24px; }
-    .social-links { display: flex; gap: 12px; }
-    .social-link {
-      width: 44px; height: 44px; border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03); display: flex;
-      align-items: center; justify-content: center;
-      color: var(--ink); text-decoration: none; font-size: 1.2rem; transition: all 0.15s;
+    .terminal-header-bar {
+      background: var(--yellow);
+      color: #000000;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
-    .social-link:hover { border-color: var(--red); color: var(--red); }
-    .contact-form { display: flex; flex-direction: column; gap: 16px; }
-    .form-label { font-size: 0.6rem; color: var(--red); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
-    .form-input, .form-textarea {
-      width: 100%; background: var(--bg-card); border: 1px solid var(--border);
-      padding: 12px 16px; color: var(--ink); font-family: var(--mono); font-size: 0.82rem; outline: none; transition: border-color 0.15s;
+    .terminal-controls-dots {
+      display: flex;
+      gap: 6px;
     }
-    .form-input:focus, .form-textarea:focus { border-color: var(--red); }
-    .form-input::placeholder, .form-textarea::placeholder { color: #333; }
-    .form-textarea { resize: none; min-height: 120px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+    .term-dot {
+      width: 10px;
+      height: 10px;
+      border: 1px solid #000;
+    }
+    .term-dot.black { background: #000; }
+    .term-dot.white { background: #fff; }
+    .term-dot.red { background: var(--red); }
+    .terminal-viewport {
+      padding: 24px;
+      height: 380px;
+      overflow-y: auto;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+    .term-row {
+      margin-bottom: 6px;
+    }
+    .term-row.sys { color: var(--ink-dim); }
+    .term-row.cmd { color: var(--yellow); font-weight: 700; }
+    .term-row.res { color: #FFFFFF; }
+    .term-row.accent { color: var(--green); }
+    .term-input-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px 20px;
+      border-top: 1px solid var(--border);
+      background: #08080c;
+    }
+    .term-prompt {
+      color: var(--yellow);
+      font-weight: 800;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+    .term-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      caret-color: var(--yellow);
+    }
 
-    .cyber-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      padding: 28px; margin-top: 48px; max-width: 800px; margin-left: auto; margin-right: auto;
-      position: relative; transition: all 0.2s;
+    /* CONTACT SECTION */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
     }
-    .cyber-card:hover { border-color: var(--red); transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--red-glow); }
-    .cyber-card-badge {
-      display: inline-block; background: var(--red); color: #fff;
-      font-size: 0.6rem; font-weight: 800; padding: 3px 10px;
-      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
+    @media (max-width: 860px) {
+      .contact-layout { grid-template-columns: 1fr; }
     }
-    .cyber-card h3 { font-family: var(--display); font-size: 1.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; }
-    .cyber-card p { color: var(--ink-dim); font-size: 0.8rem; margin-bottom: 16px; }
-    .cyber-stats { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
-    .cyber-stat { text-align: center; }
-    .cyber-stat-val { font-family: var(--display); font-size: 1.5rem; font-weight: 800; color: var(--red); }
-    .cyber-stat-label { font-size: 0.55rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 1.5px; }
+    .contact-info-panel h3 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: var(--yellow);
+    }
+    .contact-info-panel p {
+      font-size: 0.85rem;
+      color: var(--ink-dim);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .social-btn-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .social-icon-btn {
+      background: #14141c;
+      border: 2px solid var(--border);
+      color: var(--ink);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px 18px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.1s ease;
+      box-shadow: 4px 4px 0px #000000;
+    }
+    .social-icon-btn:hover {
+      background: var(--yellow);
+      color: #000000;
+      border-color: #000000;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #FFFFFF;
+    }
 
+    .brutalist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 3px solid var(--border);
+      padding: 30px;
+      box-shadow: 6px 6px 0px #000000;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
+    .form-ctrl {
+      width: 100%;
+      background: #0a0a0f;
+      border: 2px solid var(--border);
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.1s ease;
+    }
+    .form-ctrl:focus {
+      border-color: var(--yellow);
+      box-shadow: 3px 3px 0px var(--yellow);
+    }
+    .form-ctrl::placeholder {
+      color: var(--ink-muted);
+    }
+    textarea.form-ctrl {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* FOOTER */
     footer {
-      background: #030303; border-top: 1px solid var(--border);
-      padding: 48px 24px 20px; margin-top: 100px;
+      background: #000000;
+      border-top: 4px solid var(--ink);
+      padding: 60px 24px 30px;
     }
     .footer-inner {
-      max-width: 1320px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px;
-      padding-bottom: 32px; border-bottom: 1px solid var(--border);
+      max-width: 1360px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid var(--border);
     }
-    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; } }
-    .footer-brand { font-family: var(--display); font-size: 1.6rem; font-weight: 800; color: var(--red); margin-bottom: 10px; }
-    .footer-desc { font-size: 0.78rem; color: var(--ink-dim); max-width: 400px; }
-    .footer-col h4 { font-size: 0.72rem; color: var(--red); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 6px; }
-    .footer-col ul li a { color: var(--ink-dim); text-decoration: none; font-size: 0.78rem; transition: color 0.1s; }
-    .footer-col ul li a:hover { color: var(--red); }
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+    .footer-brand h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--yellow);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .footer-brand p {
+      font-size: 0.8rem;
+      color: var(--ink-dim);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+    .footer-col h4 {
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-col h4::before {
+      content: '■';
+      color: var(--yellow);
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+    .footer-col ul li a {
+      color: var(--ink-dim);
+      text-decoration: none;
+      font-size: 0.78rem;
+      transition: color 0.1s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--yellow);
+      text-decoration: underline;
+    }
     .footer-bottom {
-      max-width: 1320px; margin: 16px auto 0;
-      display: flex; justify-content: space-between; flex-wrap: wrap;
-      font-size: 0.68rem; color: #333; gap: 8px;
+      max-width: 1360px;
+      margin: 20px auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      font-weight: 700;
     }
-    .reveal-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+    }
   </style>
 </head>
 <body>
-  <div class="scanline"></div>
-  <div class="vignette"></div>
-  <div id="progress-bar"></div>
-  <div class="hazard-tape"></div>
-  <div class="marquee-bar"><div class="marquee-inner">
-    // 0xSHARON SYSTEM DIRECTORY // DEVELOPER • GAMER • MUSIC PRODUCER // KAJUKATLI ON SPOTIFY // 3,513 PAGE CYBERSECURITY STUDY BOOK // SHARZO • NEXUSATTEND • BILLCRAFT // STATUS: ONLINE // 0xSHARON SYSTEM DIRECTORY // DEVELOPER • GAMER • MUSIC PRODUCER // KAJUKATLI ON SPOTIFY // 3,513 PAGE CYBERSECURITY STUDY BOOK // SHARZO • NEXUSATTEND • BILLCRAFT // STATUS: ONLINE //
-  </div></div>
 
-  <nav class="nav"><div class="nav-inner">
-    <a href="#" class="nav-brand"><span class="nav-brand-box">0xS</span><span class="nav-brand-text">SHARON BABU</span></a>
-    <div class="nav-links">
-      <a href="#about">[ABOUT]</a><a href="#projects">[PROJECTS]</a><a href="#music" class="btn-gold">[MUSIC]</a><a href="#gaming">[GAMING]</a><a href="#terminal">[TERMINAL]</a><a href="#contact">[CONTACT]</a>
+  <!-- BRUTALIST CRT SCANLINE & SCROLL PROGRESS -->
+  <div class="scanline-bar"></div>
+  <div id="scroll-progress"></div>
+
+  <!-- TOP HAZARD RIBBON -->
+  <div class="hazard-stripe"></div>
+
+  <!-- INDUSTRIAL MARQUEE TICKER -->
+  <div class="marquee-container">
+    <div class="marquee-track">
+      // 0xSHARON SYSTEM ARCHIVE // GITHUB: @0xSHARON // PROJECTS: SHARZO (ANDROID HUD) • CYBERPROBE (DEFENSIVE SECURITY) • BILLCRAFT (ERP/INVOICING) • CYBERMANAGEMENT (3,513-PAGE BOOK) // MUSIC: KAJUKATLI ON SPOTIFY // GAMING VITALS: STEAM • RIOT • DISCORD // STATUS: OPERATIONAL // ALL PROTOCOLS VERIFIED //
+      // 0xSHARON SYSTEM ARCHIVE // GITHUB: @0xSHARON // PROJECTS: SHARZO (ANDROID HUD) • CYBERPROBE (DEFENSIVE SECURITY) • BILLCRAFT (ERP/INVOICING) • CYBERMANAGEMENT (3,513-PAGE BOOK) // MUSIC: KAJUKATLI ON SPOTIFY // GAMING VITALS: STEAM • RIOT • DISCORD // STATUS: OPERATIONAL // ALL PROTOCOLS VERIFIED //
     </div>
-    <button class="nav-mobile-btn" onclick="document.getElementById('mobile-menu').classList.add('open')">[≡]</button>
-  </div></nav>
-
-  <div class="mobile-menu" id="mobile-menu">
-    <button class="mobile-close" onclick="this.parentElement.classList.remove('open')">[×]</button>
-    <a href="#about" onclick="this.parentElement.classList.remove('open')">About</a>
-    <a href="#projects" onclick="this.parentElement.classList.remove('open')">Projects</a>
-    <a href="#music" onclick="this.parentElement.classList.remove('open')">Music</a>
-    <a href="#gaming" onclick="this.parentElement.classList.remove('open')">Gaming</a>
-    <a href="#terminal" onclick="this.parentElement.classList.remove('open')">Terminal</a>
-    <a href="#contact" onclick="this.parentElement.classList.remove('open')">Contact</a>
-    <a href="https://0xsharon.github.io/cybermanagement" target="_blank">CyberMGMT</a>
   </div>
 
-  <section class="hero" id="hero">
-    <div class="hero-status">System.Initialize(Status: Online)</div>
-    <h1><span>Sharon</span><br><span class="accent">BABU</span></h1>
-    <div class="hero-tagline"><span id="typewriter-text"></span><span class="cursor"></span></div>
-    <div class="hero-btns">
-      <a href="#projects" class="btn btn-red">View Projects</a>
-      <a href="#music" class="btn btn-gold">Listen to Music</a>
-      <a href="https://github.com/KAJUKATLIii" target="_blank" class="btn">GitHub ↗</a>
-    </div>
-  </section>
-
-  <section class="section reveal-up" id="about">
-    <div class="section-header"><div class="section-tag">INTEL DOSSIER</div><h2 class="section-title">About Me</h2><p class="section-sub">Sharon — Developer, Gamer &amp; Musician</p></div>
-    <div class="about-grid">
-      <div class="card about-bio">
-        <h3>Sharon</h3>
-        <p>Hi, I'm Sharon — a developer, gamer, and music producer. I build things for the web, make beats as <span style="color:var(--gold)">KAJUKATLI</span>, and spend some time gaming. I love combining creativity with code to make stuff that actually matters.</p>
-        <div class="progress-bar-container"><div class="progress-label">Memory.Usage</div><div class="progress-track"><div class="progress-fill" data-width="85"></div></div></div>
+  <!-- NAVIGATION BAR -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-badge">0xS</span>
+        <span class="logo-text">SHARON <span>BABU</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#projects" class="nav-btn"><span>[01]</span> REPOSITORIES</a>
+        <a href="#cyber" class="nav-btn"><span>[02]</span> CYBERMGMT</a>
+        <a href="#generator" class="nav-btn"><span>[03]</span> CLI GEN</a>
+        <a href="#about" class="nav-btn"><span>[04]</span> DOSSIER</a>
+        <a href="#music" class="nav-btn"><span>[05]</span> KAJUKATLI</a>
+        <a href="#terminal" class="nav-btn"><span>[06]</span> TERMINAL</a>
+        <a href="https://github.com/0xSHARON" target="_blank" class="nav-btn nav-btn-highlight">GITHUB // 0xSHARON ↗</a>
       </div>
-      <div class="skills-grid" id="skills-grid"></div>
+      <button class="mobile-toggle" onclick="toggleMobileMenu()">MENU [≡]</button>
     </div>
-  </section>
+  </nav>
 
-  <section class="section reveal-up" id="projects">
-    <div class="section-header"><div class="section-tag">OPERATION HISTORY</div><h2 class="section-title">Deployed Projects</h2><p class="section-sub">Codebases &amp; Production Systems</p></div>
-    <div class="projects-grid" id="projects-grid"></div>
-    <div class="cyber-card reveal-up">
-      <div class="cyber-card-badge">FEATURED // CYBERSECURITY</div>
-      <h3>Cybersecurity Management Study Book</h3>
-      <p>A complete, uncompromised 32-week self-study companion for technical leaders, architects, and CISOs. 100% free and open resources.</p>
-      <div class="cyber-stats">
-        <div class="cyber-stat"><div class="cyber-stat-val">3,513</div><div class="cyber-stat-label">Pages</div></div>
-        <div class="cyber-stat"><div class="cyber-stat-val">10</div><div class="cyber-stat-label">Domains</div></div>
-        <div class="cyber-stat"><div class="cyber-stat-val">157+</div><div class="cyber-stat-label">Free Resources</div></div>
-        <div class="cyber-stat"><div class="cyber-stat-val">32</div><div class="cyber-stat-label">Weeks</div></div>
-      </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a href="https://0xsharon.github.io/cybermanagement" target="_blank" class="btn btn-red">View Book Site ↗</a>
-        <a href="https://github.com/0xSHARON/cybermanagement" target="_blank" class="btn">GitHub Repo ↗</a>
-      </div>
+  <!-- FULLSCREEN BRUTALIST MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMobileMenu()">[X] CLOSE</button>
+    <a href="#projects" onclick="toggleMobileMenu()">[01] REPOSITORIES</a>
+    <a href="#cyber" onclick="toggleMobileMenu()">[02] CYBERMANAGEMENT</a>
+    <a href="#generator" onclick="toggleMobileMenu()">[03] CLI GENERATOR</a>
+    <a href="#about" onclick="toggleMobileMenu()">[04] ABOUT DOSSIER</a>
+    <a href="#music" onclick="toggleMobileMenu()">[05] MUSIC // KAJUKATLI</a>
+    <a href="#terminal" onclick="toggleMobileMenu()">[06] TERMINAL</a>
+    <a href="https://github.com/0xSHARON" target="_blank" style="background:var(--yellow); color:#000;">GITHUB 0xSHARON ↗</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-meta-bar">
+      <div class="hero-stamp live"><span class="live-pulse"></span>SYSTEM STATUS: ONLINE</div>
+      <div class="hero-stamp">ARCHIVE: 0xSHARON</div>
+      <div class="hero-stamp red">CLEARANCE: OMEGA</div>
+      <div class="hero-stamp">BUILD: 2026.09.20</div>
     </div>
-    <div style="text-align:center;margin-top:48px;"><a href="https://github.com/KAJUKATLIii" target="_blank" class="btn">Explore Full Archive ↗</a></div>
-  </section>
 
-  <section class="section reveal-up" id="music">
-    <div class="section-header"><div class="section-tag">AUDIO LIBRARY</div><h2 class="section-title">Stream My Tracks</h2><p class="section-sub">KAJUKATLI — Soul R&amp;B, Slow &amp; Reverb, Indie Pop</p></div>
-    <div class="music-box">
-      <div class="music-header">
-        <div class="music-live"><div class="live-dot"></div><span>Live Feed / Spotify</span></div>
-        <div class="music-platforms">
-          <a href="https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7" target="_blank" title="Spotify"><img src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify"></a>
-          <a href="https://www.jiosaavn.com/artist/kajukatli-songs/v,eC5YfYJJM_" target="_blank" title="JioSaavn"><img src="https://cdn.simpleicons.org/jio/2BC5B4" alt="JioSaavn"></a>
-          <a href="https://music.amazon.in/artists/B0GH2B778C/kajukatli" target="_blank" title="Amazon Music"><img src="https://img.icons8.com/?size=100&id=3TE5FcLikFfj&format=png&color=000000" alt="Amazon"></a>
-          <a href="https://music.apple.com/us/artist/kajukatli/1869692508" target="_blank" title="Apple Music"><img src="https://cdn.simpleicons.org/applemusic/FA57C1" alt="Apple Music"></a>
+    <div class="hero-title-wrap">
+      <h1 class="hero-name">
+        SHARON<br>
+        <span class="yellow">0xSHARON</span>
+      </h1>
+    </div>
+
+    <div class="hero-tagline-box">
+      <p class="hero-tagline">
+        BUILDER // <strong>CYBERSECURITY</strong> • <strong>SYSTEMS &amp; ANDROID</strong> • <strong>FULL-STACK</strong> • <strong>MUSIC PRODUCER (KAJUKATLI)</strong>
+        <span class="cursor-blink"></span>
+      </p>
+    </div>
+
+    <div class="btn-group">
+      <a href="#projects" class="btn btn-yellow">EXPLORE 0xSHARON REPOS ↓</a>
+      <a href="https://0xsharon.github.io/cybermanagement" target="_blank" class="btn btn-red">3,513-PAGE BOOK READER ↗</a>
+      <a href="https://github.com/0xSHARON" target="_blank" class="btn btn-dark">GITHUB @0xSHARON ↗</a>
+    </div>
+  </header>
+
+  <div class="hazard-stripe-red"></div>
+
+  <!-- SECTION: REPOSITORIES -->
+  <section class="section reveal" id="projects">
+    <div class="section-head">
+      <span class="section-label">CODE REPOSITORY ARCHIVE</span>
+      <h2 class="section-title">0xSHARON REPOSITORIES</h2>
+      <p class="section-desc">
+        Primary open-source engineering projects hosted on <a href="https://github.com/0xSHARON" target="_blank" style="color:var(--yellow); text-decoration:none; font-weight:800;">github.com/0xSHARON</a>. Built for raw performance, defensive security, enterprise workflows, and zero-overhead execution.
+      </p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterRepos('all', this)">[ALL REPOSITORIES (5)]</button>
+      <button class="filter-btn" onclick="filterRepos('systems', this)">[SYSTEMS &amp; ANDROID]</button>
+      <button class="filter-btn" onclick="filterRepos('security', this)">[CYBERSECURITY]</button>
+      <button class="filter-btn" onclick="filterRepos('enterprise', this)">[ENTERPRISE &amp; ERP]</button>
+      <button class="filter-btn" onclick="filterRepos('devops', this)">[DEVOPS &amp; LABS]</button>
+    </div>
+
+    <div class="repos-grid" id="reposGrid">
+      
+      <!-- REPO 01: SHARZO -->
+      <div class="repo-card featured" data-category="systems">
+        <div class="repo-card-top">
+          <span class="repo-index">01</span>
+          <span class="repo-badge badge-yellow">FEATURED // ANDROID HUD</span>
+        </div>
+        <h3 class="repo-title">SHARZO</h3>
+        <div class="repo-slug">
+          <span>REPO:</span>
+          <a href="https://github.com/0xSHARON/sharzo" target="_blank">0xSHARON/sharzo ↗</a>
+        </div>
+        <p class="repo-desc">
+          Precision Control &amp; Elite Screen Mirroring for Android on Windows. Delivers two modes: a zero-overhead standalone CLI engine (&lt; 15MB RAM) and a cyberpunk Electron graphical HUD with 1-click app launcher and preset sliders.
+        </p>
+        <ul class="repo-features-list">
+          <li>120 FPS high-refresh gaming at 1080p / 16Mbps stream</li>
+          <li>Hardware screen-off mirroring (saves battery &amp; heat)</li>
+          <li>Standalone C++ core (sharzo.exe) + Electron HUD GUI</li>
+          <li>Zero external driver installation; pre-bundled ADB &amp; decoders</li>
+        </ul>
+        <div class="repo-tags">
+          <span class="tag-pill highlight">SCRCPY CORE</span>
+          <span class="tag-pill highlight">ELECTRON HUD</span>
+          <span class="tag-pill">120 FPS</span>
+          <span class="tag-pill">ADB PROTOCOL</span>
+          <span class="tag-pill">C++ / BATCH</span>
+        </div>
+        <div class="repo-actions">
+          <a href="https://github.com/0xSHARON/sharzo" target="_blank" class="action-btn action-btn-gh"><span>⌘</span> GITHUB REPO</a>
+          <a href="https://0xsharon.github.io/sharzo/" target="_blank" class="action-btn action-btn-live"><span>↗</span> LIVE WEBSITE</a>
         </div>
       </div>
-      <iframe class="spotify-embed" src="https://open.spotify.com/embed/artist/05WbUMWFoKEvMsNe9mNxN7?utm_source=generator&theme=0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+      <!-- REPO 02: CYBERPROBE -->
+      <div class="repo-card featured" data-category="security">
+        <div class="repo-card-top">
+          <span class="repo-index">02</span>
+          <span class="repo-badge badge-red">SECURITY AUDIT SUITE</span>
+        </div>
+        <h3 class="repo-title">CyberProbe</h3>
+        <div class="repo-slug">
+          <span>REPO:</span>
+          <a href="https://github.com/0xSHARON/CyberProbe" target="_blank">0xSHARON/CyberProbe ↗</a>
+        </div>
+        <p class="repo-desc">
+          Real Web Vulnerability &amp; Penetration Testing Suite. Passive, defensive network scanner providing OWASP Top 10 (2024) compliance verification, TLS socket handshakes, HTTP security headers auditing, and real-time SSE telemetry streaming.
+        </p>
+        <ul class="repo-features-list">
+          <li>Real-time Server-Sent Events (SSE) live telemetry stream</li>
+          <li>Automated OWASP 2024, CWE, and NIST SP 800-115 checks</li>
+          <li>REST API (/api/scan) for CI/CD DevSecOps integration</li>
+          <li>Passive, RFC-compliant network and header recon engine</li>
+        </ul>
+        <div class="repo-tags">
+          <span class="tag-pill highlight">JAVASCRIPT</span>
+          <span class="tag-pill highlight">EXPRESS SSE</span>
+          <span class="tag-pill">OWASP 2024</span>
+          <span class="tag-pill">TLS / CIPHER RECON</span>
+          <span class="tag-pill">REST API</span>
+        </div>
+        <div class="repo-actions">
+          <a href="https://github.com/0xSHARON/CyberProbe" target="_blank" class="action-btn action-btn-gh"><span>⌘</span> GITHUB REPO</a>
+          <a href="#terminal" onclick="runSimulatedProbe()" class="action-btn action-btn-live"><span>▶</span> SIMULATE PROBE</a>
+        </div>
+      </div>
+
+      <!-- REPO 03: BILLCRAFT -->
+      <div class="repo-card" data-category="enterprise">
+        <div class="repo-card-top">
+          <span class="repo-index">03</span>
+          <span class="repo-badge badge-cyan">ERP &amp; INVOICING</span>
+        </div>
+        <h3 class="repo-title">Billcraft</h3>
+        <div class="repo-slug">
+          <span>REPO:</span>
+          <a href="https://github.com/0xSHARON/billcraft" target="_blank">0xSHARON/billcraft ↗</a>
+        </div>
+        <p class="repo-desc">
+          Modern, high-performance Business Management System designed for small-to-medium enterprises. Streamlines multi-tier inventory, real-time stock alert thresholds, CRM and vendor management, and instantaneous PDF invoicing.
+        </p>
+        <ul class="repo-features-list">
+          <li>Instant zero-reload AJAX operations (instant deletes/updates)</li>
+          <li>Automated print-ready PDF invoice compilation</li>
+          <li>1-Click direct WhatsApp invoice dispatch to customers</li>
+          <li>Prepared PDO statements &amp; Bcrypt session authentication</li>
+        </ul>
+        <div class="repo-tags">
+          <span class="tag-pill highlight">PHP 8.0+</span>
+          <span class="tag-pill highlight">MYSQL</span>
+          <span class="tag-pill">AJAX ZERO-RELOAD</span>
+          <span class="tag-pill">PDF INVOICING</span>
+          <span class="tag-pill">WHATSAPP API</span>
+        </div>
+        <div class="repo-actions">
+          <a href="https://github.com/0xSHARON/billcraft" target="_blank" class="action-btn action-btn-gh"><span>⌘</span> GITHUB REPO</a>
+        </div>
+      </div>
+
+      <!-- REPO 04: CYBERMANAGEMENT -->
+      <div class="repo-card" data-category="security">
+        <div class="repo-card-top">
+          <span class="repo-index">04</span>
+          <span class="repo-badge badge-yellow">3,513-PAGE CURRICULUM</span>
+        </div>
+        <h3 class="repo-title">cybermanagement</h3>
+        <div class="repo-slug">
+          <span>REPO:</span>
+          <a href="https://github.com/0xSHARON/cybermanagement" target="_blank">0xSHARON/cybermanagement ↗</a>
+        </div>
+        <p class="repo-desc">
+          Massive 32-week open curriculum and self-study platform for technical security architects and CISOs. Complete with an interactive web portal, embedded media streamer, and full PDF reader.
+        </p>
+        <ul class="repo-features-list">
+          <li>3,513 comprehensive pages across 10 security domains</li>
+          <li>Hosted interactive portal deployed on GitHub Pages</li>
+          <li>Embedded executive video player and PDF curriculum engine</li>
+          <li>Zero-cost, 100% open-access technical references</li>
+        </ul>
+        <div class="repo-tags">
+          <span class="tag-pill highlight">3,513 PAGES</span>
+          <span class="tag-pill highlight">10 DOMAINS</span>
+          <span class="tag-pill">CISSP / CISO MAPPING</span>
+          <span class="tag-pill">MEDIA EMBED</span>
+        </div>
+        <div class="repo-actions">
+          <a href="https://github.com/0xSHARON/cybermanagement" target="_blank" class="action-btn action-btn-gh"><span>⌘</span> GITHUB REPO</a>
+          <a href="https://0xsharon.github.io/cybermanagement" target="_blank" class="action-btn action-btn-live"><span>↗</span> LIVE PORTAL</a>
+        </div>
+      </div>
+
+      <!-- REPO 05: GITHUB-BADGES-LAB -->
+      <div class="repo-card" data-category="devops">
+        <div class="repo-card-top">
+          <span class="repo-index">05</span>
+          <span class="repo-badge badge-green">CI/CD SANDBOX</span>
+        </div>
+        <h3 class="repo-title">github-badges-lab</h3>
+        <div class="repo-slug">
+          <span>REPO:</span>
+          <a href="https://github.com/0xSHARON/github-badges-lab" target="_blank">0xSHARON/github-badges-lab ↗</a>
+        </div>
+        <p class="repo-desc">
+          Automated GitHub Actions sandbox repository designed to demonstrate, trigger, and unlock developer workflow achievements and profile milestone badges via programmatic commits.
+        </p>
+        <ul class="repo-features-list">
+          <li>CI/CD GitHub Actions workflow trigger pipelines</li>
+          <li>Automated pull request &amp; issue event triggers</li>
+          <li>Developer milestone testing and badge verification</li>
+          <li>Lightweight headless automation scripts</li>
+        </ul>
+        <div class="repo-tags">
+          <span class="tag-pill highlight">GITHUB ACTIONS</span>
+          <span class="tag-pill">CI/CD AUTOMATION</span>
+          <span class="tag-pill">WORKFLOWS</span>
+          <span class="tag-pill">DEVOPS</span>
+        </div>
+        <div class="repo-actions">
+          <a href="https://github.com/0xSHARON/github-badges-lab" target="_blank" class="action-btn action-btn-gh"><span>⌘</span> GITHUB REPO</a>
+        </div>
+      </div>
+
     </div>
+
+    <!-- FEATURED MEGA CARD: 3,513-PAGE CYBERSECURITY MANAGEMENT BOOK -->
+    <div class="featured-mega-card reveal" id="cyber">
+      <div class="mega-head">
+        <span class="mega-badge">CORE MILESTONE PUBLICATION // 0xSHARON</span>
+        <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--yellow); font-weight:800;">
+          URL: 0xsharon.github.io/cybermanagement
+        </span>
+      </div>
+      <h3 class="mega-title">CYBERSECURITY MANAGEMENT STUDY BOOK</h3>
+      <p class="mega-desc">
+        An uncompromised, 3,513-page curriculum synthesized for cybersecurity executives, technical architects, and CISOs. Covers Governance, Zero Trust Architecture, Defensive Blue Teaming, Threat Modeling, Regulatory Compliance, and AI Safety with 157+ open industry resources.
+      </p>
+
+      <div class="stats-matrix">
+        <div class="stat-box">
+          <div class="stat-val red">3,513</div>
+          <div class="stat-lbl">TOTAL PAGES</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">10</div>
+          <div class="stat-lbl">CORE DOMAINS</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">32</div>
+          <div class="stat-lbl">INTENSIVE WEEKS</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">157+</div>
+          <div class="stat-lbl">VERIFIED RESOURCES</div>
+        </div>
+      </div>
+
+      <div class="btn-group" style="justify-content:flex-start;">
+        <a href="https://0xsharon.github.io/cybermanagement" target="_blank" class="btn btn-red">OPEN INTERACTIVE BOOK PORTAL ↗</a>
+        <a href="https://github.com/0xSHARON/cybermanagement" target="_blank" class="btn btn-dark">GITHUB REPO // 0xSHARON/CYBERMANAGEMENT ↗</a>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE BRUTALIST TOOL: SHARZO CLI COMMAND BUILDER -->
+    <div class="cli-generator-box reveal" id="generator">
+      <div class="cli-gen-title">
+        <span>⚡</span> SHARZO COMMAND GENERATOR // CLI CONSOLE
+      </div>
+      <p style="font-size:0.8rem; color:var(--ink-dim); line-height:1.6;">
+        Generate exact launch flags for <code>sharzo.exe</code> on Windows with instant 1-click clipboard copy:
+      </p>
+
+      <div class="cli-controls">
+        <div class="cli-field">
+          <label>Max Resolution</label>
+          <select class="cli-select" id="cfg-res" onchange="updateSharzoCmd()">
+            <option value="1920">1080p FHD (1920px)</option>
+            <option value="1280">720p HD (1280px)</option>
+            <option value="2560">1440p 2K (2560px)</option>
+            <option value="0">Native (Full Panel)</option>
+          </select>
+        </div>
+        <div class="cli-field">
+          <label>Framerate Target</label>
+          <select class="cli-select" id="cfg-fps" onchange="updateSharzoCmd()">
+            <option value="120">120 FPS (Ultra Smooth)</option>
+            <option value="90">90 FPS (High Refresh)</option>
+            <option value="60" selected>60 FPS (Standard)</option>
+            <option value="30">30 FPS (Low Latency)</option>
+          </select>
+        </div>
+        <div class="cli-field">
+          <label>Video Bitrate</label>
+          <select class="cli-select" id="cfg-bitrate" onchange="updateSharzoCmd()">
+            <option value="16M" selected>16 Mbps (Clear Gaming)</option>
+            <option value="24M">24 Mbps (Maximum Quality)</option>
+            <option value="8M">8 Mbps (Low USB Overhead)</option>
+            <option value="4M">4 Mbps (Ultra Fast)</option>
+          </select>
+        </div>
+        <div class="cli-field">
+          <label>Screen-Off Mirroring</label>
+          <select class="cli-select" id="cfg-screen" onchange="updateSharzoCmd()">
+            <option value="off" selected>Turn Phone Screen OFF (Save Battery)</option>
+            <option value="on">Keep Phone Screen ON</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cli-output-row">
+        <code class="cli-output-cmd" id="sharzoCmdOutput">.\sharzo.exe -m 1920 --max-fps 60 -b 16M --turn-screen-off --stay-awake</code>
+        <button class="copy-btn" onclick="copySharzoCmd()">COPY TO CLIPBOARD</button>
+      </div>
+    </div>
+
   </section>
 
-  <section class="section reveal-up" id="gaming">
-    <div class="section-header"><div class="section-tag">COMBAT LOG</div><h2 class="section-title">Gaming Stats</h2><p class="section-sub">Achievements &amp; Platform IDs</p></div>
-    <div class="gaming-grid">
-      <div class="gaming-sidebar">
-        <div class="gamer-ids">
-          <h4>Identification.Vitals</h4>
-          <div class="gamer-id-row"><div class="gamer-id-platform"><img src="https://cdn.simpleicons.org/discord/5865F2" alt="">Discord</div><span class="gamer-id-value">kajukatli.</span></div>
-          <div class="gamer-id-row"><div class="gamer-id-platform"><img src="https://cdn.simpleicons.org/steam/ffffff" alt="">Steam</div><span class="gamer-id-value"><a href="https://steamcommunity.com/profiles/76561199416920676/" target="_blank">kajukatli</a></span></div>
-          <div class="gamer-id-row"><div class="gamer-id-platform"><img src="https://cdn.simpleicons.org/epicgames/ffffff" alt="">Epic</div><span class="gamer-id-value"><a href="https://store.epicgames.com/en-US/u/08ff2902b4584eb3aefc35de9ac52637" target="_blank">KAJUKATLiii</a></span></div>
-          <div class="gamer-id-row"><div class="gamer-id-platform"><img src="https://cdn.simpleicons.org/riotgames/D32936" alt="">Riot</div><span class="gamer-id-value">KAJUKATLI#00000</span></div>
-          <div class="gamer-id-row"><div class="gamer-id-platform">🎮 Xbox</div><span class="gamer-id-value">KAJUKATLIIII</span></div>
-        </div>
-        <div class="gamer-ids"><div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#1b2838;"></div>
-          <h4 style="color:#66c0f4;">Steam.Stats</h4>
-          <div class="steam-stats-grid">
-            <div class="steam-stat"><div class="steam-stat-val">11</div><div class="steam-stat-label">Level</div></div>
-            <div class="steam-stat"><div class="steam-stat-val">6</div><div class="steam-stat-label">Games</div></div>
-            <div class="steam-stat"><div class="steam-stat-val">4</div><div class="steam-stat-label">Badges</div></div>
-            <div class="steam-stat"><div class="steam-stat-val">42</div><div class="steam-stat-label">Friends</div></div>
+  <div class="hazard-stripe"></div>
+
+  <!-- SECTION: DOSSIER & SKILLS -->
+  <section class="section reveal" id="about">
+    <div class="section-head">
+      <span class="section-label">OPERATOR DOSSIER</span>
+      <h2 class="section-title">ABOUT SHARON BABU</h2>
+      <p class="section-desc">
+        Identity, technical disciplines, and execution competencies. Merging defensive cybersecurity, low-level tooling, audio engineering, and web development.
+      </p>
+    </div>
+
+    <div class="about-layout">
+      <!-- BIO DOSSIER -->
+      <div class="about-bio-card">
+        <h3>OPERATOR PROFILE</h3>
+        <p>
+          I am <strong>Sharon Babu</strong> (<code>0xSHARON</code>). I build production software, security assessment utilities, and system tooling. My engineering philosophy revolves around <strong>brutalist efficiency</strong>: no bloated frameworks, zero redundant dependencies, and direct control over memory and runtime.
+        </p>
+        <p>
+          When away from compiler terminals, I produce electronic, lofi, and soul music under the moniker <strong style="color:var(--yellow);">KAJUKATLI</strong> with worldwide streaming presence on Spotify and Apple Music, and play competitive tactical FPS titles.
+        </p>
+
+        <table class="dossier-table">
+          <tr>
+            <td>CODENAME</td>
+            <td>0xSHARON // KAJUKATLI</td>
+          </tr>
+          <tr>
+            <td>PRIMARY GITHUB</td>
+            <td><a href="https://github.com/0xSHARON" target="_blank" style="color:var(--yellow); text-decoration:none;">github.com/0xSHARON</a></td>
+          </tr>
+          <tr>
+            <td>SPECIALIZATIONS</td>
+            <td>Cybersecurity, Systems, Web, Audio</td>
+          </tr>
+          <tr>
+            <td>STUDY WORK</td>
+            <td>3,513-Page Cyber Management Guide</td>
+          </tr>
+          <tr>
+            <td>SPOTIFY ARTIST</td>
+            <td>KAJUKATLI (Verified Artist)</td>
+          </tr>
+          <tr>
+            <td>STATUS</td>
+            <td><span style="color:var(--green);">AVAILABLE FOR ENGAGEMENTS</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- SKILLS MATRIX -->
+      <div class="skills-matrix-grid">
+        <div class="skill-card">
+          <div class="skill-icon-bar">
+            <div class="skill-icon-box">🛡️</div>
+            <h4 class="skill-title">Cybersecurity</h4>
+          </div>
+          <p class="skill-desc">Defensive auditing, OWASP Top 10 compliance, network recon, and CISSP/CISO management frameworks.</p>
+          <div class="skill-tags">
+            <span class="tag-pill highlight">OWASP</span>
+            <span class="tag-pill">TLS / RECON</span>
+            <span class="tag-pill">RISK MATRIX</span>
+            <span class="tag-pill">AUDITING</span>
           </div>
         </div>
-        <div class="gamer-ids" style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px;">
-          <span style="font-size:0.6rem;color:var(--red);text-transform:uppercase;letter-spacing:2px;">System.Status:</span>
-          <span style="font-size:0.6rem;color:#22c55e;text-transform:uppercase;display:flex;align-items:center;gap:4px;"><span class="live-dot"></span>Ready_To_Play</span>
+
+        <div class="skill-card">
+          <div class="skill-icon-bar">
+            <div class="skill-icon-box">⚡</div>
+            <h4 class="skill-title">Systems &amp; CLI</h4>
+          </div>
+          <p class="skill-desc">Android ADB protocol reverse engineering, scrcpy integration, C++ binaries, shell scripts, and Electron HUDs.</p>
+          <div class="skill-tags">
+            <span class="tag-pill highlight">ADB / SCRCPY</span>
+            <span class="tag-pill">ELECTRON</span>
+            <span class="tag-pill">POWERSHELL</span>
+            <span class="tag-pill">LOW LATENCY</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-bar">
+            <div class="skill-icon-box">🌐</div>
+            <h4 class="skill-title">Full Stack Web</h4>
+          </div>
+          <p class="skill-desc">Modern responsive web architectures, Node.js, Express SSE, PHP 8+, RESTful APIs, and vanilla brutalist UI systems.</p>
+          <div class="skill-tags">
+            <span class="tag-pill highlight">NODE.JS</span>
+            <span class="tag-pill">EXPRESS</span>
+            <span class="tag-pill">PHP / MYSQL</span>
+            <span class="tag-pill">REST APIS</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-bar">
+            <div class="skill-icon-box">🎧</div>
+            <h4 class="skill-title">Audio Engineering</h4>
+          </div>
+          <p class="skill-desc">Music composition, mixing, mastering, and global DSP distribution under the verified artist identity KAJUKATLI.</p>
+          <div class="skill-tags">
+            <span class="tag-pill highlight">DAW / MIXING</span>
+            <span class="tag-pill">SOUL &amp; INDIE</span>
+            <span class="tag-pill">SOUND DESIGN</span>
+            <span class="tag-pill">SPOTIFY API</span>
+          </div>
         </div>
       </div>
-      <div class="games-grid" id="games-grid"></div>
     </div>
   </section>
 
-  <section class="section reveal-up" id="terminal">
-    <div class="section-header"><div class="section-tag">SYSTEM ACCESS</div><h2 class="section-title">Terminal</h2><p class="section-sub">Direct Command Interface</p></div>
-    <div class="terminal-wrap">
-      <div class="terminal-head"><div class="terminal-dots"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div></div><div class="terminal-label">bash — 80×24</div></div>
-      <div class="terminal-body" id="terminal-body">
-        <div class="terminal-line system">KAJU OS [Version 1.0.42]</div>
-        <div class="terminal-line system">(c) 2026 Sharon Babu. All rights reserved.</div>
-        <div class="terminal-line system">&nbsp;</div>
-        <div class="terminal-line system">Type "help" to see available commands.</div>
-        <div class="terminal-line system">&nbsp;</div>
+  <div class="hazard-stripe-red"></div>
+
+  <!-- SECTION: AUDIO / SPOTIFY (KAJUKATLI) -->
+  <section class="section reveal" id="music">
+    <div class="section-head">
+      <span class="section-label">AUDIO FREQUENCY LOG</span>
+      <h2 class="section-title">MUSIC PRODUCTION // KAJUKATLI</h2>
+      <p class="section-desc">
+        Original productions released across major streaming networks. Soul R&amp;B, Slowed &amp; Reverb, Indie Pop, and cinematic soundscapes.
+      </p>
+    </div>
+
+    <div class="music-container">
+      <div class="music-top-bar">
+        <div class="artist-branding">
+          <span class="artist-badge">VERIFIED ARTIST</span>
+          <h3 class="artist-name">KAJUKATLI</h3>
+        </div>
+
+        <div class="platforms-row">
+          <a href="https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7" target="_blank" class="platform-link">
+            <img src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify"> SPOTIFY
+          </a>
+          <a href="https://music.apple.com/us/artist/kajukatli/1869692508" target="_blank" class="platform-link">
+            <img src="https://cdn.simpleicons.org/applemusic/FA57C1" alt="Apple Music"> APPLE MUSIC
+          </a>
+          <a href="https://www.jiosaavn.com/artist/kajukatli-songs/v,eC5YfYJJM_" target="_blank" class="platform-link">
+            <img src="https://cdn.simpleicons.org/jio/2BC5B4" alt="JioSaavn"> JIOSAAVN
+          </a>
+          <a href="https://music.amazon.in/artists/B0GH2B778C/kajukatli" target="_blank" class="platform-link">
+            <img src="https://img.icons8.com/?size=100&id=3TE5FcLikFfj&format=png&color=000000" alt="Amazon"> AMAZON
+          </a>
+        </div>
       </div>
-      <div style="padding:0 24px 16px;"><div class="terminal-input-row"><span>sharon@portfolio:~$</span><input type="text" class="terminal-input" id="terminal-input" autocomplete="off"></div></div>
-      <div class="terminal-scanlines"></div>
+
+      <!-- Spotify Embed Frame -->
+      <iframe 
+        class="spotify-frame"
+        src="https://open.spotify.com/embed/artist/05WbUMWFoKEvMsNe9mNxN7?utm_source=generator&theme=0"
+        allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+      </iframe>
     </div>
   </section>
 
-  <section class="section reveal-up" id="contact">
-    <div class="section-header"><div class="section-tag">DIRECT UPLINK</div><h2 class="section-title">Contact</h2><p class="section-sub">Communication Channel .01</p></div>
-    <div class="contact-grid">
-      <div class="contact-left">
-        <h3>Transmission.Ready</h3>
-        <p>Initiate a high-priority communication. Whether it's for a collaboration, recruitment, or a technical inquiry, my channels are open.</p>
-        <div class="social-links">
-          <a href="https://github.com/KAJUKATLIii" target="_blank" class="social-link" title="GitHub">⌘</a>
-          <a href="https://www.instagram.com/sharon_339955" target="_blank" class="social-link" title="Instagram">◎</a>
-          <a href="https://www.youtube.com/@kajukatliiii" target="_blank" class="social-link" title="YouTube">▶</a>
-          <a href="https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7" target="_blank" class="social-link" title="Spotify" style="color:#1DB954;">♫</a>
+  <div class="hazard-stripe"></div>
+
+  <!-- SECTION: GAMING & VITALS -->
+  <section class="section reveal" id="gaming">
+    <div class="section-head">
+      <span class="section-label">TACTICAL COMBAT LOG</span>
+      <h2 class="section-title">GAMING VITALS &amp; IDS</h2>
+      <p class="section-desc">
+        Hardware stats, player credentials, and active multiplayer telemetry across gaming networks.
+      </p>
+    </div>
+
+    <div class="gaming-layout">
+      <!-- Player IDs -->
+      <div class="gamer-profile-card">
+        <h4>PLATFORM IDENTIFIERS</h4>
+        <div class="id-row">
+          <div class="id-platform"><img src="https://cdn.simpleicons.org/discord/5865F2" width="14" alt=""> DISCORD</div>
+          <span class="id-val">kajukatli.</span>
         </div>
-        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);opacity:0.4;">
-          <div style="font-size:0.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:4px;">System_Encryption_Level: Omega</div>
+        <div class="id-row">
+          <div class="id-platform"><img src="https://cdn.simpleicons.org/steam/ffffff" width="14" alt=""> STEAM</div>
+          <span class="id-val"><a href="https://steamcommunity.com/profiles/76561199416920676/" target="_blank">kajukatli ↗</a></span>
+        </div>
+        <div class="id-row">
+          <div class="id-platform"><img src="https://cdn.simpleicons.org/epicgames/ffffff" width="14" alt=""> EPIC GAMES</div>
+          <span class="id-val"><a href="https://store.epicgames.com/en-US/u/08ff2902b4584eb3aefc35de9ac52637" target="_blank">KAJUKATLiii ↗</a></span>
+        </div>
+        <div class="id-row">
+          <div class="id-platform"><img src="https://cdn.simpleicons.org/riotgames/D32936" width="14" alt=""> RIOT GAMES</div>
+          <span class="id-val">KAJUKATLI#00000</span>
+        </div>
+        <div class="id-row">
+          <div class="id-platform">🎮 XBOX</div>
+          <span class="id-val">KAJUKATLIIII</span>
+        </div>
+
+        <div style="margin-top:20px; background:#000; border:2px solid var(--border); padding:12px; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.65rem; color:var(--ink-dim); font-weight:800;">STATUS:</span>
+          <span style="font-size:0.65rem; color:var(--green); font-weight:800; display:flex; align-items:center; gap:6px;">
+            <span class="live-pulse"></span> READY FOR CO-OP
+          </span>
         </div>
       </div>
-      <form class="contact-form" onsubmit="handleContactSubmit(event)">
-        <div class="form-row">
-          <div><div class="form-label">Identity.Name</div><input type="text" class="form-input" placeholder="INPUT_TEXT_HERE..." required id="c-name"></div>
-          <div><div class="form-label">Electronic.Mail</div><input type="email" class="form-input" placeholder="ID@DOMAIN.EXE" id="c-email"></div>
+
+      <!-- Games List -->
+      <div class="games-collection">
+        <div class="game-item-card">
+          <span class="game-card-num">01</span>
+          <div style="font-size:1.6rem; margin-top:6px;">🚚</div>
+          <h4 class="game-title">Euro Truck Sim 2</h4>
+          <span class="game-tag">ROAD VETERAN // ACTIVE</span>
+          <p style="font-size:0.75rem; color:var(--ink-dim); margin-top:8px;">Heavy haulage transport, European logistics, and convoy simulation.</p>
         </div>
-        <div><div class="form-label">Packet.Message</div><textarea class="form-textarea" placeholder="COREDATA_ENTRY..." required id="c-message"></textarea></div>
-        <button type="submit" class="btn btn-red" style="width:100%;text-align:center;" id="c-submit">Initiate Transmission</button>
+
+        <div class="game-item-card">
+          <span class="game-card-num">02</span>
+          <div style="font-size:1.6rem; margin-top:6px;">🎯</div>
+          <h4 class="game-title">Valorant</h4>
+          <span class="game-tag">TACTICAL FPS // COMPETITIVE</span>
+          <p style="font-size:0.75rem; color:var(--ink-dim); margin-top:8px;">5v5 character-based tactical shooter with high-precision gunplay.</p>
+        </div>
+
+        <div class="game-item-card">
+          <span class="game-card-num">03</span>
+          <div style="font-size:1.6rem; margin-top:6px;">⛓️</div>
+          <h4 class="game-title">Chained Together</h4>
+          <span class="game-tag">CO-OP CHALLENGE</span>
+          <p style="font-size:0.75rem; color:var(--ink-dim); margin-top:8px;">High-stakes vertical climb with full physics tether coordination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hazard-stripe-red"></div>
+
+  <!-- SECTION: INTERACTIVE BRUTALIST TERMINAL -->
+  <section class="section reveal" id="terminal">
+    <div class="section-head" style="text-align:center;">
+      <span class="section-label">DIRECT CONSOLE UPLINK</span>
+      <h2 class="section-title">SYSTEM TERMINAL</h2>
+      <p class="section-desc" style="margin: 10px auto 0;">
+        Interactive command prompt. Try typing <code>repos</code>, <code>sharzo</code>, <code>cyberprobe</code>, <code>billcraft</code>, <code>cyber</code>, <code>music</code>, or <code>help</code>.
+      </p>
+    </div>
+
+    <div class="terminal-container">
+      <div class="terminal-header-bar">
+        <span>BASH CONSOLE // SHARON@0xSHARON-SYS: ~</span>
+        <div class="terminal-controls-dots">
+          <div class="term-dot black"></div>
+          <div class="term-dot white"></div>
+          <div class="term-dot red"></div>
+        </div>
+      </div>
+
+      <div class="terminal-viewport" id="termViewport">
+        <div class="term-row sys">0xSHARON SYSTEM CORE v2.6.4 [BRUTALIST ARCHIVE]</div>
+        <div class="term-row sys">(c) 2026 Sharon Babu. All 0xSHARON repositories connected.</div>
+        <div class="term-row sys">--------------------------------------------------------------</div>
+        <div class="term-row accent">Type "help" to view executable commands, or "repos" to list projects.</div>
+        <div class="term-row sys">&nbsp;</div>
+      </div>
+
+      <div class="term-input-line">
+        <span class="term-prompt">sharon@0xSHARON:~$</span>
+        <input type="text" class="term-input" id="termInput" autocomplete="off" spellcheck="false" placeholder="type a command...">
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: TRANSMISSION / CONTACT -->
+  <section class="section reveal" id="contact">
+    <div class="section-head">
+      <span class="section-label">COMMUNICATION LINK</span>
+      <h2 class="section-title">TRANSMISSION UPLINK</h2>
+      <p class="section-desc">
+        Initiate direct communications for software engineering, cybersecurity engagements, or music collaborations.
+      </p>
+    </div>
+
+    <div class="contact-layout">
+      <div class="contact-info-panel">
+        <h3>CHANNELS READY</h3>
+        <p>
+          Direct messaging channels are monitored daily. For high-priority projects or technical inquiries, reach out through GitHub, email, or social relays below.
+        </p>
+
+        <div class="social-btn-grid">
+          <a href="https://github.com/0xSHARON" target="_blank" class="social-icon-btn">
+            <span>⌘</span> GITHUB: @0xSHARON
+          </a>
+          <a href="https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7" target="_blank" class="social-icon-btn" style="color:#1DB954;">
+            <span>♫</span> SPOTIFY: KAJUKATLI
+          </a>
+          <a href="https://www.instagram.com/sharon_339955" target="_blank" class="social-icon-btn">
+            <span>◎</span> INSTAGRAM
+          </a>
+          <a href="https://www.youtube.com/@kajukatliiii" target="_blank" class="social-icon-btn">
+            <span>▶</span> YOUTUBE
+          </a>
+        </div>
+
+        <div style="background:#0b0b10; border:2px solid var(--border); padding:16px;">
+          <div style="font-size:0.65rem; color:var(--yellow); font-weight:800; letter-spacing:2px; margin-bottom:4px;">
+            ENCRYPTION PROTOCOL: SHA-256 VERIFIED
+          </div>
+          <div style="font-size:0.75rem; color:var(--ink-dim);">
+            Direct Email: <a href="mailto:sharonbabu80@gmail.com" style="color:#FFFFFF; font-weight:700;">sharonbabu80@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRUTALIST CONTACT FORM -->
+      <form class="brutalist-form" onsubmit="handleContact(event)">
+        <div class="form-group">
+          <label>01 // SENDER IDENTIFIER</label>
+          <input type="text" class="form-ctrl" id="msgName" placeholder="NAME / CODENAME..." required>
+        </div>
+        <div class="form-group">
+          <label>02 // ELECTRONIC MAIL</label>
+          <input type="email" class="form-ctrl" id="msgEmail" placeholder="OPERATOR@DOMAIN.COM" required>
+        </div>
+        <div class="form-group">
+          <label>03 // PACKET PAYLOAD</label>
+          <textarea class="form-ctrl" id="msgBody" placeholder="ENTER TRANSMISSION DATA..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-yellow" id="submitBtn" style="width:100%;">
+          TRANSMIT PACKET →
+        </button>
       </form>
     </div>
   </section>
 
-  <div class="hazard-tape"></div>
+  <!-- FOOTER -->
+  <div class="hazard-stripe"></div>
   <footer>
     <div class="footer-inner">
-      <div><div class="footer-brand">0xSHARON</div><p class="footer-desc">Developer, Music Producer, Gamer. Building immersive digital experiences with a HUD-first philosophy.</p></div>
-      <div class="footer-col"><h4>Navigation</h4><ul>
-        <li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li>
-        <li><a href="#music">Music / KAJUKATLI</a></li><li><a href="#gaming">Gaming</a></li>
-        <li><a href="#terminal">Terminal</a></li><li><a href="#contact">Contact</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Links</h4><ul>
-        <li><a href="https://github.com/KAJUKATLIii" target="_blank">GitHub</a></li>
-        <li><a href="https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7" target="_blank">Spotify (KAJUKATLI)</a></li>
-        <li><a href="https://0xsharon.github.io/cybermanagement" target="_blank">CyberManagement Book</a></li>
-        <li><a href="https://www.instagram.com/sharon_339955" target="_blank">Instagram</a></li>
-      </ul></div>
+      <div class="footer-brand">
+        <h2>0xSHARON // SHARON BABU</h2>
+        <p>
+          Developer, Cybersecurity Researcher, Musician (KAJUKATLI). Championing ruthless efficiency, brutalist user interfaces, low-latency tooling, and open technical knowledge.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>REPOSITORIES</h4>
+        <ul>
+          <li><a href="https://github.com/0xSHARON/sharzo" target="_blank">0xSHARON/sharzo</a></li>
+          <li><a href="https://github.com/0xSHARON/CyberProbe" target="_blank">0xSHARON/CyberProbe</a></li>
+          <li><a href="https://github.com/0xSHARON/billcraft" target="_blank">0xSHARON/billcraft</a></li>
+          <li><a href="https://github.com/0xSHARON/cybermanagement" target="_blank">0xSHARON/cybermanagement</a></li>
+          <li><a href="https://github.com/0xSHARON/github-badges-lab" target="_blank">0xSHARON/github-badges-lab</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>DIRECT UPLINKS</h4>
+        <ul>
+          <li><a href="https://github.com/0xSHARON" target="_blank">GitHub Profile (@0xSHARON)</a></li>
+          <li><a href="https://0xsharon.github.io/cybermanagement" target="_blank">Cybersecurity Management Book</a></li>
+          <li><a href="https://0xsharon.github.io/sharzo/" target="_blank">SHARZO Official Site</a></li>
+          <li><a href="https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7" target="_blank">Spotify (KAJUKATLI)</a></li>
+          <li><a href="mailto:sharonbabu80@gmail.com">sharonbabu80@gmail.com</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom"><div>&copy; 2026 Sharon Babu // 0xSHARON. ALL SYSTEMS OPERATIONAL.</div><div>BUILT WITH BRUTALIST SPEC // ZERO FRAMEWORKS</div></div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 SHARON BABU // 0xSHARON. ALL RIGHTS RESERVED.</div>
+      <div>BRUTALIST SPECIFICATION v3.0 // ZERO BLOAT // PURE RAW WEB</div>
+    </div>
   </footer>
 
+  <!-- CORE LOGIC -->
   <script>
-    window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('progress-bar').style.width=(window.scrollY/h*100)+'%';});
-    const tagline="Developer \u2022 Gamer \u2022 Musician";let tw_i=0;const tw_el=document.getElementById('typewriter-text');
-    function typeChar(){if(tw_i<tagline.length){tw_el.textContent+=tagline[tw_i++];setTimeout(typeChar,90);}}typeChar();
-    const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
-    document.querySelectorAll('.reveal-up').forEach(el=>observer.observe(el));
-    const pObserver=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.style.width=e.target.dataset.width+'%';});},{threshold:0.5});
-    document.querySelectorAll('.progress-fill,.game-progress-fill').forEach(el=>pObserver.observe(el));
-
-    const skills=[
-      {name:'Web Dev',icon:'\u2328',desc:'Clean, fast websites and web apps with modern tech.',tags:['React','Node.js','Vite','HTML/CSS','JavaScript','REST APIs']},
-      {name:'Gaming',icon:'\uD83C\uDFAE',desc:'Competitive gamer who lives for the thrill.',tags:['PC','FPS','Open World','RPG','Valorant','GTA V']},
-      {name:'Music',icon:'\u266B',desc:'Producer releasing tracks under KAJUKATLI.',tags:['Soul R&B','Slow & Reverb','Indie Pop']},
-      {name:'Systems',icon:'\u2699',desc:'Building tools and automations that just work.',tags:['Bots','Scripts','APIs','Discord.js','Python','Shell']},
-      {name:'Deploy',icon:'\uD83D\uDE80',desc:'Ship projects on cloud servers and beyond.',tags:['Vercel','GitHub','CI/CD','Netlify','Railway','Docker']},
-      {name:'Global',icon:'\uD83C\uDF10',desc:'Responsive, accessible, worldwide design.',tags:['Mobile','CSS','UX','Responsive','Dark Mode','Animations']},
-    ];
-    document.getElementById('skills-grid').innerHTML=skills.map(s=>`<div class="card" style="padding:20px;"><div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"><div style="font-size:1.3rem;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);background:rgba(255,255,255,0.03);">${s.icon}</div><h3 style="font-family:var(--display);font-size:1.1rem;font-weight:800;text-transform:uppercase;font-style:italic;">${s.name}</h3></div><p style="font-size:0.78rem;color:var(--ink-dim);margin-bottom:12px;">${s.desc}</p><div style="display:flex;flex-wrap:wrap;gap:4px;">${s.tags.map(t=>`<span class="tag tag-red">${t}</span>`).join('')}</div></div>`).join('');
-
-    const projects=[
-      {id:'01',title:'SHARZO',desc:'Screen mirroring & control app for Android devices on Windows. Optimized for content creators and mobile gamers.',tech:['Batchfile','scrcpy','Android SDK'],github:'https://github.com/KAJUKATLIii/SHARZO'},
-      {id:'02',title:'NexusAttend',desc:'Modern student attendance app built with Node.js, Express, and ZXing Barcode scanner with Discord integration.',tech:['Node.js','Express','ZXing','Discord API'],github:'https://github.com/KAJUKATLIii/attendance'},
-      {id:'03',title:'Billcraft',desc:'High-performance Business Management System \u2014 inventory, sales, and professional PDF invoice generation.',tech:['PHP','MySQL','Glassmorphism','AJAX'],github:'https://github.com/KAJUKATLIii/billcraft'},
-    ];
-    document.getElementById('projects-grid').innerHTML=projects.map(p=>`<div class="card" style="display:flex;flex-direction:column;"><div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:16px;"><span class="card-num">${p.id}</span><div style="display:flex;gap:8px;"><a href="${p.github}" target="_blank" class="card-link">\u2318 GitHub</a><a href="${p.github}" target="_blank" class="card-link">\u2197 Demo</a></div></div><h3 class="card-title">${p.title}</h3><p class="card-desc" style="flex:1;">${p.desc}</p><div style="display:flex;flex-wrap:wrap;gap:4px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.05);">${p.tech.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`).join('');
-
-    const games=[
-      {name:'Euro Truck Simulator 2',rank:'Road Veteran',icon:'\u26A1',stats:'Recently Played',progress:75},
-      {name:'Valorant',rank:'Active',icon:'\uD83C\uDFAF',stats:'Competitive FPS',progress:85},
-      {name:'Chained Together',rank:'Co-op Mode',icon:'\uD83D\uDEE1',stats:'Recently Played',progress:60},
-    ];
-    document.getElementById('games-grid').innerHTML=games.map((g,i)=>`<div class="game-card"><div class="game-card-num">0${i+1}</div><div class="game-card-icon">${g.icon}</div><h3>${g.name}</h3><div class="game-card-meta rank">Rank: ${g.rank}</div><div class="game-card-meta intel">Intel: ${g.stats}</div><div class="game-progress"><div class="game-progress-track"><div class="game-progress-fill" data-width="${g.progress}" style="width:0%;"></div></div><div class="game-progress-val">${g.progress}%</div></div></div>`).join('');
-
-    const termBody=document.getElementById('terminal-body');const termInput=document.getElementById('terminal-input');
-    const commands={
-      help:()=>['Available commands: about, projects, skills, contact, music, cyber, whoami, clear'],
-      about:()=>['IDENTITY: Sharon Babu','ROLE: Full Stack Developer / Music Producer / Gamer','MISSION: Building immersive digital experiences with a HUD-first philosophy.'],
-      projects:()=>['ARCHIVE_INDEX:','1. SHARZO - Android Mirroring Utility','2. NEXUSATTEND - QR Auth Messenger','3. BILLCRAFT - Enterprise Logistics','4. CYBERMANAGEMENT - 3,513-page Security Study Book'],
-      skills:()=>['TECH_STACK: React, Vite, Node.js, Tailwind, Discord.js, Python, PHP, MySQL'],
-      music:()=>['ARTIST_ID: KAJUKATLI','GENRE: Soul R&B, Lofi, Indie','PLATFORMS: Spotify, Apple Music, JioSaavn, Amazon Music'],
-      whoami:()=>['You are a guest user at IP: 127.0.0.1. Access level: READ_ONLY'],
-      contact:()=>['UPLINK_CHANNELS: github.com/KAJUKATLIii, IG: @sharon_339955, Spotify: KAJUKATLI'],
-      cyber:()=>['PROJECT: Cybersecurity Management Study Book','PAGES: 3,513 | PARTS: 10 | WEEKS: 32','URL: https://0xsharon.github.io/cybermanagement'],
-    };
-    termInput.addEventListener('keydown',e=>{
-      if(e.key!=='Enter')return;const cmd=termInput.value.trim().toLowerCase();
-      const ul=document.createElement('div');ul.className='terminal-line user';ul.textContent=`sharon@portfolio:~$ ${termInput.value}`;termBody.appendChild(ul);
-      if(cmd==='clear'){termBody.innerHTML='';}
-      else if(commands[cmd]){commands[cmd]().forEach(l=>{const el=document.createElement('div');el.className='terminal-line system';el.textContent=l;termBody.appendChild(el);});}
-      else if(cmd){const el=document.createElement('div');el.className='terminal-line system';el.textContent=`Command not found: ${cmd}. Type "help" for a list of commands.`;termBody.appendChild(el);}
-      termInput.value='';termBody.scrollTop=termBody.scrollHeight;
+    // SCROLL PROGRESS BAR
+    window.addEventListener('scroll', () => {
+      const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+      document.getElementById('scroll-progress').style.width = progress + '%';
     });
 
-    function handleContactSubmit(e){
-      e.preventDefault();const name=document.getElementById('c-name').value;const email=document.getElementById('c-email').value;const msg=document.getElementById('c-message').value;
-      const s=encodeURIComponent(`Portfolio Contact from ${name}`);const b=encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${msg}`);
-      window.location.href=`mailto:sharonbabu80@gmail.com?subject=${s}&body=${b}`;
-      document.getElementById('c-submit').textContent='Transmission Sent \u2713';setTimeout(()=>{document.getElementById('c-submit').textContent='Initiate Transmission';},3000);
+    // MOBILE MENU TOGGLE
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+    // INTERSECTION OBSERVER FOR BRUTALIST REVEALS
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // REPOSITORY CATEGORY FILTER
+    function filterRepos(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.repo-card');
+      cards.forEach(card => {
+        if (category === 'all') {
+          card.style.display = 'flex';
+        } else {
+          const cardCat = card.dataset.category;
+          card.style.display = (cardCat === category) ? 'flex' : 'none';
+        }
+      });
+    }
+
+    // SHARZO CLI COMMAND BUILDER
+    function updateSharzoCmd() {
+      const res = document.getElementById('cfg-res').value;
+      const fps = document.getElementById('cfg-fps').value;
+      const bitrate = document.getElementById('cfg-bitrate').value;
+      const screen = document.getElementById('cfg-screen').value;
+
+      let cmd = '.\\sharzo.exe';
+      if (res !== '0') cmd += ` -m ${res}`;
+      if (fps) cmd += ` --max-fps ${fps}`;
+      if (bitrate) cmd += ` -b ${bitrate}`;
+      if (screen === 'off') cmd += ' --turn-screen-off --stay-awake';
+
+      document.getElementById('sharzoCmdOutput').textContent = cmd;
+    }
+
+    function copySharzoCmd() {
+      const cmd = document.getElementById('sharzoCmdOutput').textContent;
+      navigator.clipboard.writeText(cmd).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const oldText = btn.textContent;
+        btn.textContent = 'COPIED!';
+        btn.style.background = 'var(--green)';
+        setTimeout(() => {
+          btn.textContent = oldText;
+          btn.style.background = 'var(--yellow)';
+        }, 1500);
+      });
+    }
+
+    // TERMINAL INTERFACE
+    const termViewport = document.getElementById('termViewport');
+    const termInput = document.getElementById('termInput');
+
+    const termCommands = {
+      help: () => [
+        'AVAILABLE COMMANDS:',
+        '  repos        - List all 0xSHARON repositories on GitHub',
+        '  sharzo       - Details on SHARZO Android mirroring & HUD',
+        '  cyberprobe   - Details on CyberProbe security scanner suite',
+        '  billcraft    - Details on Billcraft enterprise ERP & invoicing',
+        '  cyber        - Details on the 3,513-page Cyber Management book',
+        '  music        - Stream tracks & platforms for KAJUKATLI',
+        '  whoami       - Current user clearance and identity',
+        '  clear        - Reset terminal window'
+      ],
+      repos: () => [
+        '0xSHARON REPOSITORY CATALOG:',
+        '  1. 0xSHARON/sharzo          - High-refresh Android mirroring & HUD GUI',
+        '  2. 0xSHARON/CyberProbe      - Defensive web vulnerability auditing suite',
+        '  3. 0xSHARON/billcraft       - Enterprise ERP, stock alerts & PDF invoices',
+        '  4. 0xSHARON/cybermanagement - 3,513-page CISO curriculum & video reader',
+        '  5. 0xSHARON/github-badges-lab - CI/CD actions and achievement sandbox',
+        'PROFILE: https://github.com/0xSHARON'
+      ],
+      sharzo: () => [
+        'SHARZO // 0xSHARON/sharzo',
+        'TYPE: High-Performance Android Mirroring Engine',
+        'FEATURES: 120 FPS / 1080p, < 15MB RAM, Screen-off mode, Electron HUD GUI.',
+        'URL: https://github.com/0xSHARON/sharzo | Live: https://0xsharon.github.io/sharzo/'
+      ],
+      cyberprobe: () => [
+        'CYBERPROBE // 0xSHARON/CyberProbe',
+        'TYPE: Defensive Web Security & Penetration Suite',
+        'STANDARDS: OWASP Top 10 (2024), CWE, NIST SP 800-115, TLS Handshakes.',
+        'URL: https://github.com/0xSHARON/CyberProbe'
+      ],
+      billcraft: () => [
+        'BILLCRAFT // 0xSHARON/billcraft',
+        'TYPE: Enterprise Business Management & PDF Invoicing',
+        'STACK: PHP 8+, MySQL, Instant AJAX operations, WhatsApp API.',
+        'URL: https://github.com/0xSHARON/billcraft'
+      ],
+      cyber: () => [
+        'CYBERSECURITY MANAGEMENT STUDY BOOK // 3,513 PAGES',
+        'DOMAINS: 10 Comprehensive Domains across 32 intensive weeks',
+        'TARGET: Technical Architects, Lead Engineers, and CISOs',
+        'READER: https://0xsharon.github.io/cybermanagement'
+      ],
+      music: () => [
+        'ARTIST: KAJUKATLI',
+        'GENRES: Soul R&B, Lofi, Slowed & Reverb, Indie Pop',
+        'SPOTIFY: https://open.spotify.com/artist/05WbUMWFoKEvMsNe9mNxN7'
+      ],
+      whoami: () => [
+        'IDENTITY: GUEST OPERATOR',
+        'SYSTEM: 0xSHARON BRUTALIST PORTAL // ACCESS LEVEL: READ_ONLY',
+        'STATUS: SECURE RFC-COMPLIANT CONNECTION'
+      ]
+    };
+
+    termInput.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const val = termInput.value.trim().toLowerCase();
+      if (!val) return;
+
+      const userRow = document.createElement('div');
+      userRow.className = 'term-row cmd';
+      userRow.textContent = `sharon@0xSHARON:~$ ${termInput.value}`;
+      termViewport.appendChild(userRow);
+
+      if (val === 'clear') {
+        termViewport.innerHTML = '';
+      } else if (termCommands[val]) {
+        termCommands[val]().forEach(line => {
+          const resRow = document.createElement('div');
+          resRow.className = 'term-row res';
+          resRow.textContent = line;
+          termViewport.appendChild(resRow);
+        });
+      } else {
+        const errRow = document.createElement('div');
+        errRow.className = 'term-row sys';
+        errRow.textContent = `Command not recognized: "${val}". Type "help" for a list of commands.`;
+        termViewport.appendChild(errRow);
+      }
+
+      termInput.value = '';
+      termViewport.scrollTop = termViewport.scrollHeight;
+    });
+
+    function runSimulatedProbe() {
+      location.href = '#terminal';
+      termInput.value = 'cyberprobe';
+      termInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    }
+
+    // CONTACT FORM HANDLER
+    function handleContact(e) {
+      e.preventDefault();
+      const name = document.getElementById('msgName').value;
+      const email = document.getElementById('msgEmail').value;
+      const body = document.getElementById('msgBody').value;
+
+      const subject = encodeURIComponent(`[0xSHARON Transmission] from ${name}`);
+      const mailBody = encodeURIComponent(`NAME: ${name}\nEMAIL: ${email}\n\nTRANSMISSION PAYLOAD:\n${body}`);
+      
+      window.location.href = `mailto:sharonbabu80@gmail.com?subject=${subject}&body=${mailBody}`;
+
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'TRANSMISSION DISPATCHED ✓';
+      btn.style.background = 'var(--green)';
+      btn.style.color = '#000000';
+      setTimeout(() => {
+        btn.textContent = 'TRANSMIT PACKET →';
+        btn.style.background = 'var(--yellow)';
+      }, 3500);
     }
   </script>
 </body>
