@@ -26,6 +26,7 @@
       --orange-dark: #c23a00;
       --concrete: #bfbbb3;
       --concrete-dark: #4a4843;
+      --border-color: #2a2a32;
       --border-w: 3px;
       --shadow-sm: 4px 4px 0px #0e0e0e;
       --shadow-md: 6px 6px 0px #0e0e0e;
@@ -35,19 +36,40 @@
       --font-mono: 'JetBrains Mono', monospace;
     }
 
-    /* ── DARK MODE (DEFAULT & MATCHING CYBERMANAGEMENT) ── */
+    /* ── DARK CYBERMANAGEMENT BRUTALISM (DEFAULT) ── */
     [data-theme="dark"] {
       --ink: #e8e4db;
-      --paper: #0d0d0d;
-      --paper-light: #161614;
+      --paper: #0b0b0e;
+      --paper-light: #121217;
+      --paper-card: #15151b;
+      --paper-card-hover: #1b1b22;
       --orange: #ff5e1a;
       --orange-dark: #c23a00;
       --concrete: #3a3835;
       --concrete-dark: #9e9a94;
-      --shadow-sm: 4px 4px 0px #ff5e1a44;
-      --shadow-md: 6px 6px 0px #ff5e1a44;
-      --shadow-lg: 10px 10px 0px #ff5e1a44;
+      --border-color: #262630;
+      --shadow-sm: 4px 4px 0px #050508;
+      --shadow-md: 6px 6px 0px #050508;
+      --shadow-lg: 10px 10px 0px #050508;
       --shadow-orange: 6px 6px 0px #ff5e1a;
+    }
+
+    /* LIGHT MODE PALETTE */
+    [data-theme="light"] {
+      --ink: #0e0e0e;
+      --paper: #e2ded6;
+      --paper-light: #ece8e0;
+      --paper-card: #f3efe6;
+      --paper-card-hover: #fcf9f2;
+      --orange: #ff4b00;
+      --orange-dark: #c23a00;
+      --concrete: #bfbbb3;
+      --concrete-dark: #4a4843;
+      --border-color: #0e0e0e;
+      --shadow-sm: 4px 4px 0px #0e0e0e;
+      --shadow-md: 6px 6px 0px #0e0e0e;
+      --shadow-lg: 10px 10px 0px #0e0e0e;
+      --shadow-orange: 6px 6px 0px #ff4b00;
     }
 
     * {
@@ -69,14 +91,14 @@
       font-family: var(--font-mono);
       line-height: 1.55;
       overflow-x: hidden;
-      background-image: radial-gradient(var(--concrete) 1px, transparent 1px);
-      background-size: 24px 24px;
+      background-image: radial-gradient(rgba(255, 94, 26, 0.12) 1px, transparent 1px);
+      background-size: 28px 28px;
       -webkit-font-smoothing: antialiased;
     }
 
     ::selection {
       background: var(--orange);
-      color: #FFFFFF;
+      color: #0b0b0e;
     }
 
     ::-webkit-scrollbar {
@@ -85,14 +107,14 @@
     }
     ::-webkit-scrollbar-track {
       background: var(--paper);
-      border-left: var(--border-w) solid var(--ink);
+      border-left: var(--border-w) solid var(--border-color);
     }
     ::-webkit-scrollbar-thumb {
       background: var(--orange);
-      border: 2px solid var(--ink);
+      border: 2px solid var(--paper);
     }
 
-    /* TOP SCANLINE & READING BAR */
+    /* TOP SCANLINE & READING PROGRESS */
     #progress-bar {
       position: fixed;
       top: 0;
@@ -105,34 +127,34 @@
       transition: width 0.08s linear;
     }
 
-    /* HAZARD TAPE (EXACT REPLICA OF CYBERMANAGEMENT) */
+    /* HAZARD TAPE (EXACT CYBERMANAGEMENT PALETTE) */
     .hazard-stripe {
       height: 14px;
       width: 100%;
       background: repeating-linear-gradient(
         -45deg,
-        var(--ink),
-        var(--ink) 12px,
+        #050507,
+        #050507 12px,
         var(--orange) 12px,
         var(--orange) 24px
       );
-      border-bottom: var(--border-w) solid var(--ink);
-      border-top: var(--border-w) solid var(--ink);
+      border-bottom: 2px solid var(--border-color);
+      border-top: 2px solid var(--border-color);
     }
 
     /* MARQUEE RUNNER */
     .marquee-bar {
-      background: var(--ink);
-      color: var(--paper-light);
+      background: #07070a;
+      color: #bfbbb3;
       padding: 8px 0;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       overflow: hidden;
       white-space: nowrap;
       display: flex;
-      border-bottom: var(--border-w) solid var(--ink);
+      border-bottom: var(--border-w) solid var(--border-color);
     }
     .marquee-inner {
       display: inline-block;
@@ -145,8 +167,8 @@
 
     /* HEADER & NAVIGATION */
     header {
-      background: var(--paper-light);
-      border-bottom: var(--border-w) solid var(--ink);
+      background: #0e0e12;
+      border-bottom: var(--border-w) solid var(--border-color);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -170,18 +192,18 @@
     }
     .brand-box {
       background: var(--orange);
-      color: #FFFFFF;
+      color: #000000;
       padding: 4px 10px;
       font-weight: 900;
       font-size: 1.1rem;
-      border: var(--border-w) solid var(--ink);
-      box-shadow: 3px 3px 0px var(--ink);
+      border: 2px solid #000;
+      box-shadow: 3px 3px 0px var(--border-color);
       letter-spacing: 1px;
     }
     .brand-title {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       letter-spacing: -0.5px;
       text-transform: uppercase;
     }
@@ -201,13 +223,13 @@
       gap: 8px;
       padding: 9px 16px;
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
       text-transform: uppercase;
       text-decoration: none;
       color: var(--ink);
-      background: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
+      background: #14141a;
+      border: 2px solid var(--border-color);
       box-shadow: var(--shadow-sm);
       cursor: pointer;
       transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
@@ -215,42 +237,47 @@
     .btn:hover {
       transform: translate(-2px, -2px);
       box-shadow: var(--shadow-md);
-      background: var(--paper);
+      background: #1c1c24;
+      border-color: var(--orange);
     }
     .btn:active {
       transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--ink);
+      box-shadow: 1px 1px 0px var(--border-color);
     }
     .btn-orange {
       background: var(--orange);
-      color: #FFFFFF;
+      color: #000000;
+      border-color: var(--orange);
+      box-shadow: 4px 4px 0px #000000;
     }
     .btn-orange:hover {
       background: var(--orange-dark);
       color: #FFFFFF;
-      box-shadow: var(--shadow-lg);
+      border-color: var(--orange-dark);
+      box-shadow: var(--shadow-md);
     }
     .btn-dark {
-      background: var(--ink);
+      background: #08080a;
       color: var(--orange);
+      border-color: var(--border-color);
     }
     .btn-dark:hover {
-      background: #000000;
+      background: #141418;
       color: #FFFFFF;
     }
     .btn-cv {
       background: var(--orange);
-      color: #FFFFFF;
-      border-color: var(--ink);
-      box-shadow: 4px 4px 0px var(--ink);
+      color: #000000;
+      border-color: var(--orange);
+      box-shadow: 3px 3px 0px #000000;
     }
 
     .theme-toggle-btn {
       padding: 8px 12px;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      background: var(--paper);
-      border: var(--border-w) solid var(--ink);
+      background: #14141a;
+      border: 2px solid var(--border-color);
       color: var(--ink);
       cursor: pointer;
       box-shadow: var(--shadow-sm);
@@ -258,14 +285,14 @@
     }
     .theme-toggle-btn:hover {
       background: var(--orange);
-      color: #FFFFFF;
+      color: #000000;
     }
 
     .mobile-menu-btn {
       display: none;
       background: var(--orange);
-      color: #FFFFFF;
-      border: var(--border-w) solid var(--ink);
+      color: #000000;
+      border: 2px solid #000;
       font-family: var(--font-mono);
       font-weight: 900;
       padding: 8px 12px;
@@ -275,7 +302,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: var(--paper);
+      background: #0c0c10;
       z-index: 2000;
       flex-direction: column;
       align-items: center;
@@ -287,36 +314,36 @@
     .mobile-nav-drawer.open { display: flex; }
     .mobile-nav-drawer a {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 900;
       color: var(--ink);
       text-decoration: none;
       text-transform: uppercase;
       padding: 10px 20px;
-      border: var(--border-w) solid var(--ink);
-      background: var(--paper-light);
+      border: 2px solid var(--border-color);
+      background: #14141a;
       width: 100%;
       max-width: 320px;
       text-align: center;
     }
     .mobile-nav-drawer a:hover {
       background: var(--orange);
-      color: #FFFFFF;
+      color: #000000;
     }
     .mobile-close-btn {
       position: absolute;
       top: 20px;
       right: 20px;
       background: var(--orange);
-      color: #FFFFFF;
-      border: var(--border-w) solid var(--ink);
+      color: #000000;
+      border: 2px solid #000;
       padding: 6px 14px;
       font-size: 1.4rem;
       font-weight: 900;
       cursor: pointer;
     }
 
-    /* HERO SECTION (MATCHING CYBERMANAGEMENT PROPORTIONS) */
+    /* HERO SECTION */
     .hero {
       max-width: 1340px;
       margin: 0 auto;
@@ -333,9 +360,9 @@
     }
 
     .hero-main {
-      background: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-lg);
+      background: #121217;
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-md);
       padding: 40px 36px;
       display: flex;
       flex-direction: column;
@@ -349,20 +376,22 @@
     }
     .pill {
       padding: 4px 10px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      border: 2px solid var(--ink);
-      background: var(--paper);
+      border: 1px solid var(--border-color);
+      background: #181820;
+      color: #d1cdc7;
       text-transform: uppercase;
       letter-spacing: 0.8px;
     }
     .pill-orange {
       background: var(--orange);
-      color: #FFFFFF;
+      color: #000000;
+      border-color: var(--orange);
     }
     .pill-dark {
-      background: var(--ink);
-      color: var(--paper-light);
+      background: #08080a;
+      color: var(--ink);
     }
     .live-dot {
       display: inline-block;
@@ -379,25 +408,25 @@
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+      font-size: clamp(2.3rem, 5.2vw, 4.2rem);
       font-weight: 900;
       line-height: 0.95;
-      letter-spacing: -1.8px;
+      letter-spacing: -1.5px;
       text-transform: uppercase;
       margin-bottom: 20px;
       color: var(--ink);
     }
     .hero-title span {
       background: var(--orange);
-      color: #FFFFFF;
+      color: #000000;
       padding: 0 8px;
       display: inline-block;
-      box-shadow: 4px 4px 0px var(--ink);
+      box-shadow: 4px 4px 0px #000000;
     }
     .hero-desc {
-      font-size: 0.96rem;
+      font-size: 0.94rem;
       margin-bottom: 28px;
-      color: var(--ink);
+      color: #c4c0b9;
       border-left: 5px solid var(--orange);
       padding-left: 16px;
       line-height: 1.65;
@@ -415,10 +444,10 @@
       gap: 18px;
     }
     .stat-card {
-      background: var(--ink);
-      color: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-md);
+      background: #121217;
+      color: var(--ink);
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-sm);
       padding: 22px 20px;
       position: relative;
     }
@@ -435,11 +464,11 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       margin-top: 6px;
-      color: var(--paper);
+      color: var(--ink);
     }
     .stat-sub {
       font-size: 0.74rem;
-      color: var(--concrete-dark);
+      color: #9e9a94;
       margin-top: 4px;
       line-height: 1.4;
     }
@@ -456,23 +485,24 @@
     .section-tag {
       display: inline-block;
       background: var(--orange);
-      color: #FFFFFF;
+      color: #000000;
       font-size: 0.72rem;
       font-weight: 900;
       letter-spacing: 2px;
       padding: 4px 12px;
       text-transform: uppercase;
-      border: 2px solid var(--ink);
-      box-shadow: 3px 3px 0px var(--ink);
+      border: 2px solid #000;
+      box-shadow: 3px 3px 0px #000;
       margin-bottom: 12px;
     }
     .section-tag.dark {
-      background: var(--ink);
+      background: #14141a;
       color: var(--orange);
+      border-color: var(--border-color);
     }
     .section-title {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -1px;
@@ -481,7 +511,7 @@
     }
     .section-subtitle {
       font-size: 0.88rem;
-      color: var(--concrete-dark);
+      color: #9e9a94;
       margin-top: 10px;
       max-width: 780px;
       line-height: 1.6;
@@ -489,9 +519,9 @@
 
     /* CV & RESUME SPECIAL FEATURE BOX */
     .cv-feature-panel {
-      background: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-lg);
+      background: #121217;
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-md);
       padding: 36px;
       margin-bottom: 40px;
       display: grid;
@@ -513,7 +543,7 @@
       font-size: 0.88rem;
       line-height: 1.7;
       margin-bottom: 20px;
-      color: var(--ink);
+      color: #c4c0b9;
     }
     .cv-download-actions {
       display: flex;
@@ -524,24 +554,24 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.78rem;
-      background: var(--paper);
-      border: 2px solid var(--ink);
+      background: #0e0e13;
+      border: 2px solid var(--border-color);
     }
     .cv-vitals-table tr {
-      border-bottom: 1px solid var(--ink);
+      border-bottom: 1px solid var(--border-color);
     }
     .cv-vitals-table tr:last-child {
       border-bottom: none;
     }
     .cv-vitals-table td {
-      padding: 9px 12px;
+      padding: 10px 14px;
     }
     .cv-vitals-table td:first-child {
       font-weight: 800;
       text-transform: uppercase;
-      color: var(--concrete-dark);
+      color: #9e9a94;
       width: 38%;
-      border-right: 1px solid var(--ink);
+      border-right: 1px solid var(--border-color);
     }
     .cv-vitals-table td:last-child {
       font-weight: 700;
@@ -553,7 +583,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.88);
       z-index: 99999;
       align-items: center;
       justify-content: center;
@@ -563,9 +593,9 @@
       display: flex;
     }
     .cv-modal-window {
-      background: var(--paper);
-      border: 4px solid var(--ink);
-      box-shadow: 12px 12px 0px var(--orange);
+      background: #0e0e12;
+      border: 3px solid var(--orange);
+      box-shadow: 10px 10px 0px #000000;
       width: 100%;
       max-width: 1080px;
       height: 90vh;
@@ -573,13 +603,13 @@
       flex-direction: column;
     }
     .cv-modal-header {
-      background: var(--ink);
-      color: var(--paper-light);
+      background: #14141a;
+      color: var(--ink);
       padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: var(--border-w) solid var(--ink);
+      border-bottom: 2px solid var(--border-color);
     }
     .cv-modal-header h4 {
       font-family: var(--font-display);
@@ -591,7 +621,7 @@
       flex: 1;
       width: 100%;
       border: none;
-      background: #525659;
+      background: #252528;
     }
 
     /* TIMELINE & DOSSIER GRID */
@@ -604,19 +634,19 @@
       .dossier-grid { grid-template-columns: 1fr; }
     }
     .dossier-card {
-      background: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-md);
+      background: #121217;
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-sm);
       padding: 30px;
     }
     .dossier-card h3 {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 900;
       text-transform: uppercase;
       margin-bottom: 20px;
       padding-bottom: 10px;
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 2px solid var(--border-color);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -630,7 +660,7 @@
     .timeline-item {
       margin-bottom: 20px;
       padding-bottom: 16px;
-      border-bottom: 1px dashed var(--concrete);
+      border-bottom: 1px dashed var(--border-color);
     }
     .timeline-item:last-child {
       margin-bottom: 0;
@@ -640,12 +670,12 @@
     .timeline-year {
       display: inline-block;
       background: var(--orange);
-      color: #FFFFFF;
+      color: #000000;
       font-size: 0.68rem;
       font-weight: 800;
       padding: 2px 8px;
       margin-bottom: 6px;
-      border: 1px solid var(--ink);
+      border: 1px solid #000;
     }
     .timeline-role {
       font-family: var(--font-display);
@@ -656,14 +686,14 @@
     }
     .timeline-inst {
       font-size: 0.78rem;
-      color: var(--concrete-dark);
+      color: #9e9a94;
       font-weight: 700;
       margin-bottom: 6px;
     }
     .timeline-desc {
       font-size: 0.8rem;
       line-height: 1.55;
-      color: var(--ink);
+      color: #c4c0b9;
     }
 
     /* REPOSITORIES GRID (0xSHARON REPOSITORIES) */
@@ -679,20 +709,22 @@
       font-weight: 800;
       text-transform: uppercase;
       padding: 8px 16px;
-      background: var(--paper-light);
+      background: #14141a;
       color: var(--ink);
-      border: var(--border-w) solid var(--ink);
+      border: 2px solid var(--border-color);
       box-shadow: var(--shadow-sm);
       cursor: pointer;
       transition: all 0.1s ease;
     }
     .filter-tab-btn:hover {
-      background: var(--paper);
+      background: #1a1a22;
+      border-color: var(--orange);
     }
     .filter-tab-btn.active {
       background: var(--orange);
-      color: #FFFFFF;
-      box-shadow: var(--shadow-md);
+      color: #000000;
+      border-color: var(--orange);
+      box-shadow: var(--shadow-sm);
     }
 
     .repo-grid {
@@ -705,21 +737,22 @@
     }
 
     .repo-card {
-      background: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-md);
+      background: #121217;
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-sm);
       padding: 30px;
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
     }
     .repo-card:hover {
       transform: translate(-3px, -3px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-md);
+      border-color: var(--orange);
     }
     .repo-card.featured {
-      border-color: var(--orange);
+      border-color: #383848;
     }
     .repo-card-header {
       display: flex;
@@ -733,7 +766,7 @@
       font-family: var(--font-display);
       font-size: 2.2rem;
       font-weight: 900;
-      color: var(--concrete);
+      color: #383846;
       line-height: 1;
     }
     .repo-card:hover .repo-num {
@@ -744,13 +777,14 @@
       font-weight: 800;
       text-transform: uppercase;
       padding: 3px 8px;
-      border: 2px solid var(--ink);
+      border: 1px solid #000;
       background: var(--orange);
-      color: #FFFFFF;
+      color: #000000;
     }
     .repo-badge.dark {
-      background: var(--ink);
-      color: var(--paper-light);
+      background: #181820;
+      color: var(--ink);
+      border-color: var(--border-color);
     }
 
     .repo-title {
@@ -779,15 +813,15 @@
     .repo-desc {
       font-size: 0.84rem;
       line-height: 1.6;
-      color: var(--ink);
+      color: #c4c0b9;
       margin-bottom: 18px;
       flex: 1;
     }
 
     .repo-bullets {
       list-style: none;
-      background: var(--paper);
-      border: 1px solid var(--ink);
+      background: #0e0e13;
+      border: 1px solid var(--border-color);
       padding: 12px 14px;
       margin-bottom: 18px;
     }
@@ -797,7 +831,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--ink);
+      color: #d1cdc7;
     }
     .repo-bullets li:last-child { margin-bottom: 0; }
     .repo-bullets li::before {
@@ -812,21 +846,21 @@
       gap: 6px;
       margin-bottom: 22px;
       padding-top: 12px;
-      border-top: 1px solid var(--concrete);
+      border-top: 1px solid var(--border-color);
     }
     .repo-pill {
       font-size: 0.64rem;
       font-weight: 800;
       text-transform: uppercase;
       padding: 3px 8px;
-      background: var(--paper);
-      border: 1px solid var(--ink);
-      color: var(--ink);
+      background: #181820;
+      border: 1px solid var(--border-color);
+      color: #d1cdc7;
     }
     .repo-pill.accent {
       background: var(--orange);
-      color: #FFFFFF;
-      border-color: var(--ink);
+      color: #000000;
+      border-color: var(--orange);
     }
 
     .repo-btn-row {
@@ -835,13 +869,13 @@
       flex-wrap: wrap;
     }
 
-    /* CYBERMANAGEMENT 3,513-PAGE HIGHLIGHT CONTAINER */
+    /* CYBERMANAGEMENT 3,513-PAGE HIGH-CONTRAST CONTAINER */
     .cybermgmt-highlight {
       margin-top: 48px;
-      background: var(--ink);
-      color: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-lg);
+      background: #101015;
+      color: #e8e4db;
+      border: var(--border-w) solid var(--orange);
+      box-shadow: var(--shadow-md);
       padding: 40px;
       position: relative;
     }
@@ -853,23 +887,29 @@
       gap: 12px;
       margin-bottom: 16px;
     }
+    .cm-url-badge {
+      font-size: 0.75rem;
+      color: var(--orange);
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
     .cm-title {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 4vw, 3rem);
       font-weight: 900;
       text-transform: uppercase;
       line-height: 1.05;
-      color: var(--paper-light);
-      margin-bottom: 12px;
+      color: #FFFFFF !important;
+      margin-bottom: 14px;
     }
     .cm-title span {
-      color: var(--orange);
+      color: var(--orange) !important;
     }
     .cm-desc {
-      font-size: 0.92rem;
-      line-height: 1.65;
-      color: var(--concrete);
-      max-width: 860px;
+      font-size: 0.94rem;
+      line-height: 1.7;
+      color: #d6d2cb !important;
+      max-width: 880px;
       margin-bottom: 28px;
     }
     .cm-matrix {
@@ -879,32 +919,32 @@
       margin-bottom: 30px;
     }
     .cm-box {
-      background: #000000;
-      border: 2px solid var(--concrete-dark);
-      padding: 16px;
+      background: #16161d;
+      border: 2px solid #2e2e3a;
+      padding: 18px 16px;
     }
     .cm-box-val {
       font-family: var(--font-display);
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 900;
-      color: var(--orange);
+      color: var(--orange) !important;
       line-height: 1;
     }
     .cm-box-lbl {
-      font-size: 0.66rem;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--paper);
-      margin-top: 4px;
+      letter-spacing: 1.5px;
+      color: #FFFFFF !important;
+      margin-top: 6px;
     }
 
     /* SHARZO CLI GENERATOR WIDGET */
     .cli-widget-box {
       margin-top: 40px;
-      background: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-md);
+      background: #121217;
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-sm);
       padding: 32px;
     }
     .cli-widget-head {
@@ -935,22 +975,25 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 6px;
-      color: var(--ink);
+      color: #9e9a94;
     }
     .cli-input-dropdown {
       width: 100%;
-      background: var(--paper);
+      background: #0e0e13;
       color: var(--ink);
-      border: 2px solid var(--ink);
-      padding: 9px 12px;
+      border: 2px solid var(--border-color);
+      padding: 10px 12px;
       font-family: var(--font-mono);
       font-size: 0.8rem;
       outline: none;
     }
+    .cli-input-dropdown:focus {
+      border-color: var(--orange);
+    }
     .cli-display-bar {
-      background: var(--ink);
-      color: var(--paper-light);
-      border: 2px solid var(--ink);
+      background: #08080a;
+      color: var(--ink);
+      border: 2px solid var(--border-color);
       padding: 14px 18px;
       display: flex;
       justify-content: space-between;
@@ -967,9 +1010,9 @@
 
     /* MUSIC SECTION: KAJUKATLI SPOTIFY */
     .audio-module {
-      background: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-lg);
+      background: #121217;
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-sm);
       padding: 34px;
     }
     .audio-header-bar {
@@ -980,7 +1023,7 @@
       gap: 14px;
       margin-bottom: 22px;
       padding-bottom: 16px;
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 2px solid var(--border-color);
     }
     .audio-brand h3 {
       font-family: var(--font-display);
@@ -997,22 +1040,21 @@
     .spotify-embed-frame {
       width: 100%;
       height: 380px;
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-sm);
+      border: 2px solid var(--border-color);
     }
 
     /* INTERACTIVE TERMINAL */
     .terminal-box {
       max-width: 960px;
       margin: 0 auto;
-      background: var(--ink);
-      color: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-lg);
+      background: #09090c;
+      color: var(--ink);
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-md);
       overflow: hidden;
     }
     .terminal-titlebar {
-      background: var(--paper);
+      background: #14141a;
       color: var(--ink);
       padding: 10px 18px;
       display: flex;
@@ -1022,7 +1064,7 @@
       font-weight: 800;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      border-bottom: var(--border-w) solid var(--ink);
+      border-bottom: 2px solid var(--border-color);
     }
     .term-dots {
       display: flex;
@@ -1031,11 +1073,11 @@
     .tdot {
       width: 10px;
       height: 10px;
-      border: 1px solid var(--ink);
+      border: 1px solid #000;
     }
     .tdot.r { background: var(--orange); }
-    .tdot.w { background: #FFFFFF; }
-    .tdot.b { background: #000000; }
+    .tdot.w { background: #3a3a46; }
+    .tdot.b { background: #1a1a22; }
     .terminal-log {
       padding: 24px;
       height: 360px;
@@ -1043,16 +1085,16 @@
       font-size: 0.82rem;
       line-height: 1.6;
     }
-    .trow.sys { color: var(--concrete); }
+    .trow.sys { color: #8e8a84; }
     .trow.cmd { color: var(--orange); font-weight: 800; }
-    .trow.res { color: var(--paper-light); }
+    .trow.res { color: #d6d2cb; }
     .terminal-input-bar {
       display: flex;
       align-items: center;
       gap: 8px;
       padding: 12px 20px 16px;
-      border-top: 1px solid var(--concrete-dark);
-      background: #080808;
+      border-top: 1px solid var(--border-color);
+      background: #070709;
     }
     .t-prompt {
       color: var(--orange);
@@ -1070,7 +1112,7 @@
       caret-color: var(--orange);
     }
 
-    /* CONTACT SECTION */
+    /* CONTACT SECTION (NO TRANSMISSION WORDING) */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1080,9 +1122,9 @@
       .contact-grid { grid-template-columns: 1fr; }
     }
     .contact-card {
-      background: var(--paper-light);
-      border: var(--border-w) solid var(--ink);
-      box-shadow: var(--shadow-md);
+      background: #121217;
+      border: var(--border-w) solid var(--border-color);
+      box-shadow: var(--shadow-sm);
       padding: 32px;
     }
     .contact-card h3 {
@@ -1096,7 +1138,7 @@
     .contact-card p {
       font-size: 0.88rem;
       line-height: 1.65;
-      color: var(--ink);
+      color: #c4c0b9;
       margin-bottom: 24px;
     }
     .form-group {
@@ -1109,12 +1151,12 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 6px;
-      color: var(--ink);
+      color: #9e9a94;
     }
     .form-input-ctrl {
       width: 100%;
-      background: var(--paper);
-      border: 2px solid var(--ink);
+      background: #0c0c10;
+      border: 2px solid var(--border-color);
       color: var(--ink);
       font-family: var(--font-mono);
       font-size: 0.82rem;
@@ -1123,7 +1165,6 @@
     }
     .form-input-ctrl:focus {
       border-color: var(--orange);
-      box-shadow: 2px 2px 0px var(--orange);
     }
     textarea.form-input-ctrl {
       min-height: 110px;
@@ -1132,9 +1173,9 @@
 
     /* FOOTER */
     footer {
-      background: var(--ink);
-      color: var(--paper-light);
-      border-top: var(--border-w) solid var(--ink);
+      background: #09090c;
+      color: #bfbbb3;
+      border-top: var(--border-w) solid var(--border-color);
       padding: 50px 20px 24px;
     }
     .footer-inner {
@@ -1144,7 +1185,7 @@
       grid-template-columns: 2fr 1fr 1fr;
       gap: 36px;
       padding-bottom: 32px;
-      border-bottom: 1px solid var(--concrete-dark);
+      border-bottom: 1px solid var(--border-color);
     }
     @media (max-width: 768px) {
       .footer-inner { grid-template-columns: 1fr; }
@@ -1159,7 +1200,7 @@
     .footer-brand p {
       font-size: 0.8rem;
       line-height: 1.6;
-      color: var(--concrete);
+      color: #9e9a94;
       max-width: 480px;
     }
     .footer-col h4 {
@@ -1167,7 +1208,7 @@
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: var(--paper-light);
+      color: #FFFFFF;
       margin-bottom: 14px;
       display: flex;
       align-items: center;
@@ -1180,7 +1221,7 @@
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 8px; }
     .footer-col ul li a {
-      color: var(--concrete);
+      color: #9e9a94;
       text-decoration: none;
       font-size: 0.78rem;
       transition: color 0.1s;
@@ -1197,7 +1238,7 @@
       flex-wrap: wrap;
       gap: 12px;
       font-size: 0.72rem;
-      color: var(--concrete-dark);
+      color: #62605b;
       font-weight: 700;
     }
 
@@ -1212,14 +1253,14 @@
   <!-- TOP PROGRESS BAR -->
   <div id="progress-bar"></div>
 
-  <!-- TOP HAZARD RIBBON (CYBERMANAGEMENT PALETTE) -->
+  <!-- TOP HAZARD RIBBON -->
   <div class="hazard-stripe"></div>
 
   <!-- TOP MARQUEE RUNNER -->
   <div class="marquee-bar">
     <div class="marquee-inner">
-      // SHARON BABU THOTTIAN // GITHUB: @0xSHARON // BCA GRADUATE &amp; CYBERSECURITY RESEARCHER // REPOSITORIES: SHARZO • CYBERPROBE • BILLCRAFT • CYBERMANAGEMENT (3,513 PAGES) // KAJUKATLI ON SPOTIFY // VERIFIED RESUME &amp; CV ARCHIVE // ALL PROTOCOLS VERIFIED //
-      // SHARON BABU THOTTIAN // GITHUB: @0xSHARON // BCA GRADUATE &amp; CYBERSECURITY RESEARCHER // REPOSITORIES: SHARZO • CYBERPROBE • BILLCRAFT • CYBERMANAGEMENT (3,513 PAGES) // KAJUKATLI ON SPOTIFY // VERIFIED RESUME &amp; CV ARCHIVE // ALL PROTOCOLS VERIFIED //
+      // SHARON BABU THOTTIAN // GITHUB: @0xSHARON // BCA GRADUATE &amp; CYBERSECURITY RESEARCHER // REPOSITORIES: SHARZO • CYBERPROBE • BILLCRAFT • CYBERMANAGEMENT (3,513 PAGES) // KAJUKATLI ON SPOTIFY // VERIFIED RESUME &amp; CV ARCHIVE //
+      // SHARON BABU THOTTIAN // GITHUB: @0xSHARON // BCA GRADUATE &amp; CYBERSECURITY RESEARCHER // REPOSITORIES: SHARZO • CYBERPROBE • BILLCRAFT • CYBERMANAGEMENT (3,513 PAGES) // KAJUKATLI ON SPOTIFY // VERIFIED RESUME &amp; CV ARCHIVE //
     </div>
   </div>
 
@@ -1249,7 +1290,7 @@
   <!-- MOBILE NAVIGATION DRAWER -->
   <div class="mobile-nav-drawer" id="mobileDrawer">
     <button class="mobile-close-btn" onclick="toggleMobileNav()">[X] CLOSE</button>
-    <a href="#cv" onclick="toggleMobileNav()" style="background:var(--orange); color:#fff;">★ RESUME / CV</a>
+    <a href="#cv" onclick="toggleMobileNav()" style="background:var(--orange); color:#000;">★ RESUME / CV</a>
     <a href="#repos" onclick="toggleMobileNav()">[01] REPOSITORIES</a>
     <a href="#cybermanagement" onclick="toggleMobileNav()">[02] CYBERMANAGEMENT</a>
     <a href="#dossier" onclick="toggleMobileNav()">[03] EDUCATION &amp; SKILLS</a>
@@ -1456,13 +1497,12 @@
       </p>
     </div>
 
-    <!-- Category Filters -->
+    <!-- Category Filters (Updated: 4 Repositories) -->
     <div class="filter-tabs">
-      <button class="filter-tab-btn active" onclick="applyRepoFilter('all', this)">[ALL REPOSITORIES (5)]</button>
+      <button class="filter-tab-btn active" onclick="applyRepoFilter('all', this)">[ALL REPOSITORIES (4)]</button>
       <button class="filter-tab-btn" onclick="applyRepoFilter('security', this)">[CYBERSECURITY]</button>
       <button class="filter-tab-btn" onclick="applyRepoFilter('systems', this)">[SYSTEMS &amp; ANDROID]</button>
       <button class="filter-tab-btn" onclick="applyRepoFilter('enterprise', this)">[ENTERPRISE ERP]</button>
-      <button class="filter-tab-btn" onclick="applyRepoFilter('devops', this)">[CI/CD &amp; LABS]</button>
     </div>
 
     <div class="repo-grid" id="repoList">
@@ -1593,41 +1633,13 @@
         </div>
       </div>
 
-      <!-- REPO 05: GITHUB-BADGES-LAB -->
-      <div class="repo-card" data-cat="devops">
-        <div class="repo-card-header">
-          <span class="repo-num">05</span>
-          <span class="repo-badge dark">CI/CD SANDBOX</span>
-        </div>
-        <h3 class="repo-title">github-badges-lab</h3>
-        <div class="repo-link-sub">
-          <a href="https://github.com/0xSHARON/github-badges-lab" target="_blank">github.com/0xSHARON/github-badges-lab ↗</a>
-        </div>
-        <p class="repo-desc">
-          Sandbox repository implementing automated GitHub Actions workflows, achievement triggers, pull-request hooks, and CI/CD status pipeline indicators.
-        </p>
-        <ul class="repo-bullets">
-          <li>Automated pull request &amp; issue event triggers</li>
-          <li>Continuous integration status pipeline verification</li>
-          <li>Developer milestone testing and badge achievements</li>
-        </ul>
-        <div class="repo-pill-tags">
-          <span class="repo-pill accent">GITHUB ACTIONS</span>
-          <span class="repo-pill">CI/CD PIPELINES</span>
-          <span class="repo-pill">AUTOMATION</span>
-        </div>
-        <div class="repo-btn-row">
-          <a href="https://github.com/0xSHARON/github-badges-lab" target="_blank" class="btn btn-dark">GITHUB REPO</a>
-        </div>
-      </div>
-
     </div>
 
-    <!-- FEATURED MEGA BLOCK: CYBERMANAGEMENT BOOK -->
+    <!-- FEATURED MEGA BLOCK: CYBERMANAGEMENT BOOK (HIGH CONTRAST & FULLY VISIBLE TEXT) -->
     <div class="cybermgmt-highlight" id="cybermanagement">
       <div class="cm-head-bar">
         <span class="pill pill-orange">SPECIAL CITATION // 0xSHARON</span>
-        <span style="font-size:0.75rem; color:var(--paper-light); font-weight:800;">
+        <span class="cm-url-badge">
           LIVE AT: 0xsharon.github.io/cybermanagement
         </span>
       </div>
@@ -1666,7 +1678,7 @@
     <!-- SHARZO CLI COMMAND BUILDER -->
     <div class="cli-widget-box" id="cliGenerator">
       <h4 class="cli-widget-head">SHARZO CLI COMMAND GENERATOR</h4>
-      <p style="font-size:0.84rem; color:var(--concrete-dark); line-height:1.6;">
+      <p style="font-size:0.84rem; color:#9e9a94; line-height:1.6;">
         Customize launch parameters for <code>sharzo.exe</code> on Windows with 1-click clipboard copy:
       </p>
 
@@ -1784,7 +1796,7 @@
       </div>
 
       <div class="terminal-log" id="termLog">
-        <div class="trow sys">0xSHARON SYSTEM ARCHIVE [v3.0 - NEOCYBER BRUTALISM]</div>
+        <div class="trow sys">0xSHARON SYSTEM ARCHIVE [v3.1 - NEOCYBER BRUTALISM]</div>
         <div class="trow sys">(c) 2026 Sharon Babu Thottian. All verified credentials loaded.</div>
         <div class="trow sys">----------------------------------------------------------------------</div>
         <div class="trow sys">Type "help" to list commands, or "cv" to view resume summary.</div>
@@ -1798,11 +1810,11 @@
     </div>
   </section>
 
-  <!-- SECTION: CONTACT & TRANSMISSION -->
+  <!-- SECTION: CONTACT -->
   <section class="section-wrap" id="contact">
     <div class="section-header">
-      <span class="section-tag">COMMUNICATION CHANNEL</span>
-      <h2 class="section-title">TRANSMISSION UPLINK</h2>
+      <span class="section-tag">COMMUNICATION</span>
+      <h2 class="section-title">GET IN TOUCH</h2>
       <p class="section-subtitle">
         Get in touch for technical roles, cybersecurity audits, or software engineering collaborations.
       </p>
@@ -1812,7 +1824,7 @@
       <div class="contact-card">
         <h3>REACH OUT DIRECTLY</h3>
         <p>
-          I am actively exploring postgraduate opportunities abroad and technical software / security engineering engagements. Reach out through direct transmission:
+          I am actively exploring postgraduate opportunities abroad and technical software / security engineering engagements. Reach out through direct channels:
         </p>
 
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
@@ -1830,14 +1842,14 @@
           </a>
         </div>
 
-        <div style="background:var(--paper); border:2px solid var(--ink); padding:14px; font-size:0.75rem;">
+        <div style="background:#0e0e13; border:2px solid var(--border-color); padding:14px; font-size:0.75rem;">
           <span style="font-weight:800; color:var(--orange);">CLEARANCE:</span> Verified BCA &amp; DCA Graduate // Open for global relocation &amp; international academia.
         </div>
       </div>
 
-      <!-- TRANSMISSION FORM -->
-      <form class="contact-card" onsubmit="submitTransmission(event)">
-        <h3>SEND TRANSMISSION</h3>
+      <!-- CONTACT FORM (TRANSMISSION WORDING REMOVED) -->
+      <form class="contact-card" onsubmit="submitMessage(event)">
+        <h3>SEND A MESSAGE</h3>
         
         <div class="form-group">
           <label>01 // FULL NAME</label>
@@ -1850,12 +1862,12 @@
         </div>
 
         <div class="form-group">
-          <label>03 // MESSAGE PAYLOAD</label>
-          <textarea class="form-input-ctrl" id="formMsg" placeholder="ENTER TRANSMISSION PACKET..." required></textarea>
+          <label>03 // MESSAGE</label>
+          <textarea class="form-input-ctrl" id="formMsg" placeholder="ENTER YOUR MESSAGE..." required></textarea>
         </div>
 
         <button type="submit" class="btn btn-orange" id="btnSend" style="width:100%; justify-content:center;">
-          DISPATCH TRANSMISSION →
+          SEND MESSAGE →
         </button>
       </form>
     </div>
@@ -1893,7 +1905,6 @@
           <li><a href="https://github.com/0xSHARON/CyberProbe" target="_blank">0xSHARON/CyberProbe</a></li>
           <li><a href="https://github.com/0xSHARON/billcraft" target="_blank">0xSHARON/billcraft</a></li>
           <li><a href="https://github.com/0xSHARON/cybermanagement" target="_blank">0xSHARON/cybermanagement</a></li>
-          <li><a href="https://github.com/0xSHARON/github-badges-lab" target="_blank">0xSHARON/github-badges-lab</a></li>
         </ul>
       </div>
 
@@ -1924,7 +1935,7 @@
       document.getElementById('progress-bar').style.width = progress + '%';
     });
 
-    // LIGHT / DARK THEME TOGGLE (MATCHING CYBERMANAGEMENT MECHANISM)
+    // LIGHT / DARK THEME TOGGLE
     function toggleTheme() {
       const html = document.documentElement;
       const current = html.getAttribute('data-theme');
@@ -1998,7 +2009,7 @@
         setTimeout(() => {
           btn.textContent = orig;
           btn.style.background = 'var(--orange)';
-          btn.style.color = '#FFFFFF';
+          btn.style.color = '#000000';
         }, 1600);
       });
     }
@@ -2015,7 +2026,7 @@
         '  education    - View academic degrees and university records',
         '  certs        - Digital forensics and hackathon honors',
         '  skills       - Programming languages, security and web stack',
-        '  repos        - Show all 5 open source 0xSHARON repositories',
+        '  repos        - Show open source 0xSHARON repositories',
         '  sharzo       - High-refresh Android mirroring & Electron HUD details',
         '  cyberprobe   - Defensive vulnerability auditing suite details',
         '  billcraft    - Enterprise ERP & invoicing details',
@@ -2064,7 +2075,6 @@
         '  2. 0xSHARON/CyberProbe      - Defensive web vulnerability auditor',
         '  3. 0xSHARON/billcraft       - Enterprise ERP & WhatsApp PDF invoicing',
         '  4. 0xSHARON/cybermanagement - 3,513-page Cybersecurity Management Book',
-        '  5. 0xSHARON/github-badges-lab - CI/CD sandbox & workflow testing',
         'PROFILE: https://github.com/0xSHARON'
       ],
       sharzo: () => [
@@ -2137,26 +2147,26 @@
       termInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     }
 
-    // TRANSMISSION FORM HANDLER
-    function submitTransmission(e) {
+    // CONTACT FORM HANDLER (NO TRANSMISSION WORDING)
+    function submitMessage(e) {
       e.preventDefault();
       const name = document.getElementById('formName').value;
       const email = document.getElementById('formEmail').value;
       const msg = document.getElementById('formMsg').value;
 
-      const subject = encodeURIComponent(`[0xSHARON Portfolio Transmission] from ${name}`);
-      const body = encodeURIComponent(`NAME: ${name}\nEMAIL: ${email}\n\nTRANSMISSION PACKET:\n${msg}`);
+      const subject = encodeURIComponent(`[0xSHARON Portfolio Contact] from ${name}`);
+      const body = encodeURIComponent(`NAME: ${name}\nEMAIL: ${email}\n\nMESSAGE:\n${msg}`);
 
       window.location.href = `mailto:sharonbabu80@gmail.com?subject=${subject}&body=${body}`;
 
       const btn = document.getElementById('btnSend');
-      btn.textContent = 'TRANSMISSION SENT ✓';
+      btn.textContent = 'MESSAGE SENT ✓';
       btn.style.background = '#22c55e';
       btn.style.color = '#000000';
       setTimeout(() => {
-        btn.textContent = 'DISPATCH TRANSMISSION →';
+        btn.textContent = 'SEND MESSAGE →';
         btn.style.background = 'var(--orange)';
-        btn.style.color = '#FFFFFF';
+        btn.style.color = '#000000';
       }, 3500);
     }
   </script>
