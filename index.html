@@ -393,33 +393,34 @@
       align-self: flex-end;
       position: relative;
       margin-bottom: -38px;
-      margin-right: -6px;
-      z-index: 5;
+      margin-right: -10px;
+      z-index: 10;
       display: flex;
       justify-content: center;
       align-items: flex-end;
     }
-    .hero-photo-wrapper::before {
-      content: '';
+    .hero-popout-halo {
       position: absolute;
-      bottom: 30px;
-      width: 240px;
-      height: 240px;
+      bottom: 25px;
+      width: 230px;
+      height: 230px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(255, 94, 26, 0.3) 0%, rgba(255, 94, 26, 0.08) 52%, transparent 70%);
       pointer-events: none;
-      z-index: -1;
-      filter: blur(12px);
+      z-index: 1;
+      filter: blur(14px);
     }
     .hero-popout-img {
-      width: 290px;
+      position: relative;
+      z-index: 2;
+      width: 285px;
       max-width: 100%;
       height: auto;
       display: block;
       object-fit: contain;
       object-position: bottom center;
-      filter: drop-shadow(-10px 14px 0px rgba(255, 94, 26, 0.5)) drop-shadow(0 22px 35px rgba(0, 0, 0, 0.95));
-      transform: perspective(900px) rotateY(-7deg) rotateX(2deg) translateY(0px);
+      filter: drop-shadow(-10px 14px 0px rgba(255, 94, 26, 0.55)) drop-shadow(0 22px 35px rgba(0, 0, 0, 0.95));
+      transform: perspective(900px) rotateY(-7deg) rotateX(2deg);
       transform-origin: bottom center;
       transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
       cursor: pointer;
@@ -430,18 +431,18 @@
     }
     @media (max-width: 1200px) {
       .hero-popout-img {
-        width: 240px;
+        width: 235px;
       }
-      .hero-photo-wrapper::before {
-        width: 190px;
-        height: 190px;
+      .hero-popout-halo {
+        width: 180px;
+        height: 180px;
       }
     }
     @media (max-width: 860px) {
       .hero-layout {
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
-        gap: 24px;
+        gap: 20px;
       }
       .hero-photo-wrapper {
         align-self: center;
@@ -1428,6 +1429,7 @@
 
           <!-- SHARON BABU 3D POP-OUT SILHOUETTE -->
           <div class="hero-photo-wrapper">
+            <div class="hero-popout-halo"></div>
             <img src="sharon.png" alt="Sharon Babu Thottian" class="hero-popout-img">
           </div>
         </div>
