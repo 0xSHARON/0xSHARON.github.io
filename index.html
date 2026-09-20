@@ -79,6 +79,11 @@
       border-radius: 0 !important; /* STRICT BRUTALISM: NO ROUNDED EDGES */
     }
 
+    h1, h2, h3, h4, h5, h6, p, a, span, code {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
     html {
       scroll-behavior: smooth;
       background: var(--paper);
@@ -740,10 +745,13 @@
       background: #121217;
       border: var(--border-w) solid var(--border-color);
       box-shadow: var(--shadow-sm);
-      padding: 30px;
+      padding: 26px 22px;
       display: flex;
       flex-direction: column;
       position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      word-wrap: break-word;
       transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
     }
     .repo-card:hover {
@@ -789,18 +797,24 @@
 
     .repo-title {
       font-family: var(--font-display);
-      font-size: 1.6rem;
+      font-size: clamp(1.1rem, 3.2vw, 1.45rem);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -0.5px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       color: var(--ink);
+      overflow-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+      max-width: 100%;
     }
     .repo-link-sub {
       font-size: 0.74rem;
       color: var(--orange);
       font-weight: 800;
       margin-bottom: 14px;
+      overflow-wrap: break-word;
+      word-break: break-all;
     }
     .repo-link-sub a {
       color: inherit;
